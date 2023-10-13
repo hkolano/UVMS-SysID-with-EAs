@@ -264,7 +264,7 @@ for (i, trial_code) in enumerate(all_traj_codes)
         const_dt_js_df = interp_at_timesteps(sim_df[!,:time_secs], js_df, names(js_df))
         combo_df = hcat(sim_df, const_dt_imu_df[!,[:roll,:pitch]], const_dt_js_df[:,2:end])
         select!(combo_df, Not([:w_ori, :x_ori, :y_ori, :z_ori]))
-        new_file_name = joinpath("data", "full-sim-data-091023", "test", trial_code*".csv")
+        new_file_name = joinpath("data", "sim_trajs", trial_code*".csv")
         CSV.write(new_file_name, combo_df)
     else
         println("Not saving trajectory")
