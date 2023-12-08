@@ -69,6 +69,7 @@ all_traj_codes = #["003-0", "003-1",
 # "025-0", "025-1", 
 # "026-0", "026-1", "026-2", 
 # "030-0", "030-1", 
+# I think the alt ones are the ones that we're using from Hinsdale -Ever
 ["_alt_001-0"]
 # ["_alt_001-0", "_alt_001-1", "_alt_001-2", 
 # "_alt_002-0", "_alt_002-1", 
@@ -104,7 +105,7 @@ for (i, trial_code) in enumerate(all_traj_codes)
     # ----------------------------------------------------------
     
     save_to_csv = true
-    show_plots = false
+    show_plots = true
     show_animation = false
 
     include("HydroCalc.jl")
