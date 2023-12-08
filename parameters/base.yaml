@@ -1,0 +1,67 @@
+# This file contains all of the parameters that the EA/RL algorithm will have 
+# access to when learning the system id. Any parameter in here is one that can be modified
+# by the learning algorithm
+cob_vec_dict:
+  vehicle: [0.0074, 0.0, 0.02]
+  foamL: [0.00, .11, 0.027] # guess
+  foamR: [0.00, -.11, 0.027] #guess
+  shoulder: [-.001, -.003, .032]
+  upperarm: [.073, 0.0, -.002]
+  elbow: [.003, .001, -.017]
+  wrist: [0.0, 0.0, -0.098]
+  jaw: [0.0, 0.0, 0.0]
+bouyancy_mag_dict:
+  vehicle:
+    volume: 13.082
+  foamL: 8.46
+  foamR: 8.86
+com_vec_dict:
+  vehicle: [0.0, 0.0, 0.0]
+  weightCA: [-.20, .165, -.075] # guess
+  weightBL: [-.0975, .1275, -.1325] # guess
+  weightBR: [-.0975, -.1275, -.1325] # guess
+  dvl: [-.1887, .0439, -0.0595] # guess
+  dvlbracket: [-0.1542, .0439, -0.0795] # guess
+  armbase: [-.075, -.006, -.003]
+  shoulder: [0.005, -.001, 0.016]
+  upperarm: [.073, 0.0, 0.0]
+  elbow: [.017, -.026, -.002]
+  wrist: [0.0, 0.0, -.098]
+  jaw: [0.0, 0.0, 0.0]
+  armbase: [-.075, -.006, -.003]
+  jaw_wrt_wrist: [0., 0., -.190]
+grav_mag_dict:
+  vehicle: 
+    weight: 13.17
+  weightCA: 3.24
+  weightBL: 1.62
+  weightBR: 1.62
+  dvl: 0.69
+  dvlbracket: 1.01
+drag:
+  d_lin_angular: .07
+  d_nonlin_angular: 1.55
+  d_lin_coeffs: [4.03, 6.22, 5.18] # The next 3 coefficients are d_lin_angular
+  d_non_lin_coeffs: [18.18, 21.66, 36.99] # The next 3 coefficients are d_nonlin_angular
+link_volumes:
+  shoulder: 0.018
+  upperarm: 0.203
+  elbow: 0.025
+  wrist: 0.155
+  armbase: 0.202
+  jaw: 0.02
+link_masses:
+  shoulder: 0.194
+  upperarm: 0.429
+  elbow: 0.115
+  wrist: 0.333
+  armbase: 0.341
+  jaw: 0.05
+link_drags:
+  shoulder: [0.26, 0.26, 0.3]
+  upperarm: [0.3, 1.6, 1.6]
+  elbow: [0.26, 0.3, 0.26]
+  wrist: [1.8, 1.8, 0.3]
+  jaw: [.05, .05, .05]
+# Not including joint limits
+# Seems like those are constraints that the EA/RL algorithm should not modify

@@ -1,5 +1,8 @@
 #= 
 Main flight code for running the pitch prediciton pipeline with the setup used in Hinsdale trials.
+Reduced version of the flight code for running the pitch prediction pipeline with setup used in Hinsdale trials
+    Should make it possible to run the necessary parts of the pipeline as part of the EA evaluation in python
+    (or whatever other learning algorithm we use)
 =# 
 
 # ----------------------------------------------------------
@@ -104,8 +107,8 @@ for (i, trial_code) in enumerate(all_traj_codes)
     # ----------------------------------------------------------
     
     save_to_csv = true
-    show_plots = false
-    show_animation = false
+    show_plots = true
+    show_animation = true
 
     include("HydroCalc.jl")
     include("PIDCtlr.jl")

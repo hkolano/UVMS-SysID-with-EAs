@@ -2,13 +2,16 @@ using CSV, YAML
 using MeshCat, MeshCatMechanisms, MechanismGeometries
 using RigidBodyDynamics
 
-function gettrajparamsfromyaml(trial_code, dataset="fullrange2")
+function gettrajparamsfromyaml(trial_code, dataset="fullrange2", pythonhack=false)
 
     # Load desired traj data 
     if dataset == "fullrange2"
         path_to_data = joinpath("data", "combo_traj_yaml_files_"*dataset, "traj"*trial_code[1:3], "traj"*trial_code*".yaml")
     else
         path_to_data = joinpath("data", "combo_traj_yaml_files_"*dataset, "traj"*trial_code[6:8], "traj"*trial_code[6:end]*".yaml")
+    end
+    if pythonhack == true
+        path_to_data = joinpath("..","..",path_to_data)
     end
     des_data = YAML.load_file(path_to_data)
 
@@ -42,6 +45,9 @@ function gettrajparamsfromyaml(trial_code, dataset="fullrange2")
     end
 
     metadata_file_loc = joinpath("data", "hinsdale-data-2023", "metadata_"*trial_code*".yml")
+    if pythonhack == true
+        metadata_file_loc = joinpath("..","..",metadata_file_loc)
+    end
     alignment = YAML.load_file(metadata_file_loc)
     offset = alignment["start_time"]
 
@@ -51,27 +57,36 @@ function gettrajparamsfromyaml(trial_code, dataset="fullrange2")
 end
 
 
-function get_vehicle_response_from_csv(trial_code, foldername="hinsdale-data-2023", is_baseline=false)
+function get_vehicle_response_from_csv(trial_code, foldername="hinsdale-data-2023", is_baseline=false, pythonhack=false)
     if is_baseline == false
         mocap_datapath = joinpath("data", foldername, "traj"*trial_code*"_mocap.csv")
     else
         mocap_datapath = joinpath("data", foldername, trial_code*"_mocap.csv")
+    end
+    if pythonhack == true
+        mocap_datapath = joinpath("..","..", mocap_datapath)
     end
     mocap_df = CSV.read(mocap_datapath, DataFrame)
     dropmissing!(mocap_df)
     return mocap_df
 end
 
-function get_js_data_from_csv(trial_code, foldername="hinsdale-data-2023", dataset="fullrange2")
+function get_js_data_from_csv(trial_code, foldername="hinsdale-data-2023", dataset="fullrange2", pythonhack=false)
     js_filepath = joinpath("data", foldername, "traj"*trial_code*"_joint_states.csv")
+    if pythonhack == true
+        js_filepath = joinpath("..","..",js_filepath)
+    end
     # js_filepath = joinpath("data", "hinsdale-data-2023", trial_code*"_joint_states.csv")
     js_df = CSV.read(js_filepath, DataFrame)
     dropmissing!(js_df)
     return js_df
 end
 
-function get_imu_data_from_csv(trial_code, foldername="hinsdale-data-2023")
+function get_imu_data_from_csv(trial_code, foldername="hinsdale-data-2023", pythonhack=false)
     imu_filepath = joinpath("data", foldername, "traj"*trial_code*"_imu.csv")
+    if pythonhack == true
+        imu_filepath = joinpath("..","..",imu_filepath)
+    end
     imu_df = CSV.read(imu_filepath, DataFrame)
     dropmissing!(imu_df)
     return imu_df
