@@ -17,7 +17,9 @@ def evalConfig(individual, trajectory_names):
     at Hinsdale. The output is a tuple of overall mean-square error
     
     Given an individual (configuration dictionary with specific dynamic parameters), and a set of trajectories to run on, this
-    func
+    function computes the simulated alpha arm joint positions, and blue rov orientation.
+
+    Then compares the simulated data to the measured arm joint positions, and imu orientation measurements
     """
 
     # ----------------------------------------------------------
@@ -224,3 +226,7 @@ def evalConfig(individual, trajectory_names):
         CSV.write(new_file_name, combo_df)\n\
     end\n\
     """)
+
+    print(Main.sim_offset)
+
+evalConfig(None, None)
