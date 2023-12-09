@@ -4,6 +4,8 @@ parameters based on just one or a few trajectories"""
 # First just trying to call Julia to see if we can call it from python
 
 from pathlib import Path
+from julia.api import Julia
+jl = Julia(compiled_modules=False)
 from julia import Main
 
 # Trying to set this up so that it can do everything that MainPitchValidation.jl does but in a single python script
@@ -90,9 +92,15 @@ def evalConfig(individual, trajectory_names):
     #                 Get Data for Comparison
     # ----------------------------------------------------------
 
-    Main.eval("""\n\
-    for (i, trial_code) in enumerate(all_traj_codes)\n\
-    \n\
+    # Executing for loop (higher level) in python
+    # Executing each portion of the for loop (lower level) in julia
+    # I think this portion is what actually runs the simulator for each 
+    # Of the specified trajectories
+    for (Main.i, Main.trial_code) in enumerate(Main.all_traj_codes):
+        # I should have one entry (one in imu, one in joint) for each trajectory
+        all_imu_df = []
+        all_js_df = []
+        Main.eval("""\n\
         println("This trial code: $(trial_code)")\n\
     \n\
         # sim_offset = 1\n\
@@ -224,9 +232,10 @@ def evalConfig(individual, trajectory_names):
         select!(combo_df, Not([:w_ori, :x_ori, :y_ori, :z_ori]))\n\
         new_file_name = joinpath("..","..","data", "sim_trajs", trial_code*".csv")\n\
         CSV.write(new_file_name, combo_df)\n\
-    end\n\
-    """)
+        \n\
+        """)
+        all_imu_df.append(Main.const_dt_imu_df)
+        all_js_df.append(Main.const_dt_js_df)
 
-    print(Main.sim_offset)
 
 evalConfig(None, None)
