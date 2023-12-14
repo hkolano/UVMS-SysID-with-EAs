@@ -28,7 +28,6 @@ com_vec_dict:
   elbow: [.017, -.026, -.002]
   wrist: [0.0, 0.0, -.098]
   jaw: [0.0, 0.0, 0.0]
-  armbase: [-.075, -.006, -.003]
   jaw_wrt_wrist: [0., 0., -.190]
 grav_mag_dict:
   vehicle: 
@@ -42,7 +41,7 @@ drag:
   d_lin_angular: .07
   d_nonlin_angular: 1.55
   d_lin_coeffs: [4.03, 6.22, 5.18] # The next 3 coefficients are d_lin_angular
-  d_non_lin_coeffs: [18.18, 21.66, 36.99] # The next 3 coefficients are d_nonlin_angular
+  d_nonlin_coeffs: [18.18, 21.66, 36.99] # The next 3 coefficients are d_nonlin_angular
 link_volumes:
   shoulder: 0.018
   upperarm: 0.203
