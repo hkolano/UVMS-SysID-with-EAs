@@ -1,18 +1,20 @@
 # This file contains all of the parameters that the EA/RL algorithm will have 
 # access to when learning the system id. Any parameter in here is one that can be modified
 # by the learning algorithm
+# Hm... Seems like some of these parameters may be wrong or based on outdated
+# information. Would be worth it to double check these are the correct default parameters
+# - Ever
 cob_vec_dict:
   vehicle: [0.0074, 0.0, 0.02]
-  foamL: [0.00, .11, 0.027] # guess
-  foamR: [0.00, -.11, 0.027] #guess
-  shoulder: [-.001, -.003, .032]
-  upperarm: [.073, 0.0, -.002]
-  elbow: [.003, .001, -.017]
+  foamL: [0.0, 0.11, 0.027] # guess
+  foamR: [0.0, -0.11, 0.027] #guess
+  shoulder: [-0.001, -0.003, 0.032]
+  upperarm: [0.073, 0.0, -0.002]
+  elbow: [0.003, 0.001, -0.017]
   wrist: [0.0, 0.0, -0.098]
   jaw: [0.0, 0.0, 0.0]
-bouyancy_mag_dict:
-  vehicle:
-    volume: 13.082
+buoyancy_mag_dict:
+  vehicle: 100.3563 #volume * gravity
   foamL: 8.46
   foamR: 8.86
 com_vec_dict:
@@ -30,8 +32,7 @@ com_vec_dict:
   jaw: [0.0, 0.0, 0.0]
   jaw_wrt_wrist: [0., 0., -.190]
 grav_mag_dict:
-  vehicle: 
-    weight: 13.17
+  vehicle: 98.10 # Weight * gravity
   weightCA: 3.24
   weightBL: 1.62
   weightBR: 1.62
