@@ -14,32 +14,44 @@ cob_vec_dict:
   wrist: [0.0, 0.0, -0.098]
   jaw: [0.0, 0.0, 0.0]
 buoyancy_mag_dict:
-  vehicle: 100.3563 #volume * gravity
+  vehicle: 128.33442000000002 #volume times gravity
   foamL: 8.46
   foamR: 8.86
+  shoulder: 0.17605026
+  upperarm: 1.9854557100000003
+  armbase: 1.97567514
+  jaw: 0.19561140000000005
+  wrist: 1.5159883500000002
+  elbow: 0.24451425000000004
 com_vec_dict:
   vehicle: [0.0, 0.0, 0.0]
-  weightCA: [-.20, .165, -.075] # guess
-  weightBL: [-.0975, .1275, -.1325] # guess
-  weightBR: [-.0975, -.1275, -.1325] # guess
-  dvl: [-.1887, .0439, -0.0595] # guess
-  dvlbracket: [-0.1542, .0439, -0.0795] # guess
-  armbase: [-.075, -.006, -.003]
-  shoulder: [0.005, -.001, 0.016]
-  upperarm: [.073, 0.0, 0.0]
-  elbow: [.017, -.026, -.002]
-  wrist: [0.0, 0.0, -.098]
+  weightCA: [-0.2, 0.165, -0.075] # guess
+  weightBL: [-0.0975, 0.1275, -0.1325] # guess
+  weightBR: [-0.0975, -0.1275, -0.1325] # guess
+  dvl: [-0.1887, 0.0439, -0.0595] # guess
+  dvlbracket: [-0.1542, 0.0439, -0.0795] # guess
+  armbase: [-0.075, -0.006, -0.003]
+  shoulder: [0.005, -0.001, 0.016]
+  upperarm: [0.073, 0.0, 0.0]
+  elbow: [0.017, -0.026, -0.002]
+  wrist: [0.0, 0.0, -0.098]
   jaw: [0.0, 0.0, 0.0]
-  jaw_wrt_wrist: [0., 0., -.190]
+  jaw_wrt_wrist: [0.0, 0.0, -0.19]
 grav_mag_dict:
-  vehicle: 98.10 # Weight * gravity
+  vehicle: 129.1977 # Weight * gravity
   weightCA: 3.24
   weightBL: 1.62
   weightBR: 1.62
   dvl: 0.69
   dvlbracket: 1.01
+  armbase: 3.3452100000000002
+  shoulder: 1.90314
+  upperarm: 4.20849
+  elbow: 1.1281500000000002
+  jaw: 0.49050000000000005
+  wrist: 3.2667300000000004
 drag:
-  d_lin_angular: .07
+  d_lin_angular: 0.07
   d_nonlin_angular: 1.55
   d_lin_coeffs: [4.03, 6.22, 5.18] # The next 3 coefficients are d_lin_angular
   d_nonlin_coeffs: [18.18, 21.66, 36.99] # The next 3 coefficients are d_nonlin_angular

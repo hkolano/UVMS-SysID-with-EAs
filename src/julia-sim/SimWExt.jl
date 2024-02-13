@@ -39,6 +39,7 @@ function simulate_with_ext_forces(state0::MechanismState{X}, final_time, pars, c
             copyto!(v̇, result.v̇)
             copyto!(ṡ, result.ṡ)
             nothing
+            # exit()
         end
     end
 tableau = runge_kutta_4(T)

@@ -129,7 +129,7 @@ for (i, trial_code) in enumerate(all_traj_codes)
     ctlr_cache = CtlrCache(state, noise_cache, filter_cache)
 
     start_buffer = sim_offset+10
-    end_buffer = rand(5:0.01:10)
+    end_buffer = 5 # rand(5:0.01:10)
     delayed_params = delayedQuinticTrajParams(params,start_buffer, params.T+start_buffer)
 
     # Simulate the trajectory

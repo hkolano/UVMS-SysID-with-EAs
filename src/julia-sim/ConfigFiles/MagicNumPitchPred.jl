@@ -16,5 +16,5 @@ duration_after_traj = 1.0   # How long to simulate after trajectory has ended
 # ----------------------------------------------------------
 # Controller information
 # ----------------------------------------------------------
-add_noise = true
+add_noise = false
 include("../CtlrParFiles/IrosPitchPredPars.jl")
