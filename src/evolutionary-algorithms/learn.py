@@ -606,7 +606,7 @@ from deap import creator, base, tools, algorithms
 # This is a link to the docs I'm using
 
 # Setup the directory for saving data
-save_dir = os.path.expandUser("~")+"/hpc-share/uvms/preliminary/trial_0"
+save_dir = os.path.expanduser("~")+"/hpc-share/uvms/preliminary/trial_0"
 if not os.path.isdir(save_dir):
     os.makedirs(save_dir)
 # Create csv files for saving data
