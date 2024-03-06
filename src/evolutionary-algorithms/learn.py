@@ -175,7 +175,12 @@ def setupJulia():
     Main.eval('using MeshCat, MeshCatMechanisms, MechanismGeometries ')
     Main.eval('using CoordinateTransformations ')
     Main.eval('using GeometryBasics ')
-    Main.eval('using Printf, Plots, CSV, Tables, ProgressBars, Revise ')
+    Main.eval('using Printf')
+    Main.eval('using Plots')
+    Main.eval('CSV')
+    Main.eval('Tables')
+    Main.eval('ProgressBars')
+    Main.eval('Revise')
     Main.eval('using Random ')
 
     Main.eval('using DataFrames, StatsPlots, Interpolations ')
