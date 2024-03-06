@@ -176,6 +176,7 @@ def setupJulia():
     Main.eval('using CoordinateTransformations ')
     Main.eval('using GeometryBasics ')
     Main.eval('using Printf')
+    Main.eval('using GR')
     Main.eval('using Plots')
     Main.eval('CSV')
     Main.eval('Tables')
