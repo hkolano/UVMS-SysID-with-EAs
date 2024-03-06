@@ -2,8 +2,9 @@
 
 # First just trying to call Julia to see if we can call it from python
 from pathlib import Path
+import os
 from julia.api import Julia
-Julia(runtime='julia-1.8.2',compiled_modules=False)
+Julia(runtime=os.path.expanduser("~")+'/julia-1.8.2/bin/julia-1.8.2',compiled_modules=False)
 from julia import Main
 import numpy as np
 
@@ -167,42 +168,38 @@ def setupJulia():
     #                     Import Libraries
     # ----------------------------------------------------------
 
-    Main.eval(' \n\
-    \n\
-    using Pkg\n\
-    Pkg.activate(".")\n\
-    using RigidBodyDynamics, Rotations \n\
-    using LinearAlgebra, StaticArrays, DataStructures \n\
-    using MeshCat, MeshCatMechanisms, MechanismGeometries \n\
-    using CoordinateTransformations \n\
-    using GeometryBasics \n\
-    using Printf, Plots, CSV, Tables, ProgressBars, Revise \n\
-    using Random \n\
-    \n\
-    using DataFrames, StatsPlots, Interpolations \n\
-    \n\
-    include("HydroCalc.jl")\n\
-    include("SimWExt.jl")\n\
-    include("PIDCtlr.jl")\n\
-    include("UVMSPlotting.jl")\n\
-    include("HelperFuncs.jl")\n\
-    include("Noiser.jl")\n\
-    \n\
-    include("UVMSsetup.jl")\n\
-    include("ConfigFiles/MagicNumPitchVal.jl")\n\
-    include("ConfigFiles/ConstMagicNums.jl")\n\
-    include("ConfigFiles/MagicNumBlueROVHardware.jl")\n\
-    include("ConfigFiles/MagicNumAlpha.jl")\n\
-    \n\
-    trajparsingfile = joinpath("..", "hinsdale_post_processing", "gettrajparamsfromyaml.jl") \n\
-    interpolationfile = joinpath("..", "hinsdale_post_processing", "mocap_interpolation.jl") \n\
-    simhelperfuncsfile = joinpath("..", "hinsdale_post_processing", "simcomparisonfuncs.jl") \n\
-    include(trajparsingfile) \n\
-    include(interpolationfile) \n\
-    \n\
-    urdf_file = joinpath("..","..","urdf", "blue_rov_hardware_fixedjaw_pythonhack.urdf") \n\
-    \n\
-    \n')
+    Main.eval('using Pkg')
+    Main.eval('Pkg.activate(".")')
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    Main.eval('using LinearAlgebra, StaticArrays, DataStructures ')
+    Main.eval('using MeshCat, MeshCatMechanisms, MechanismGeometries ')
+    Main.eval('using CoordinateTransformations ')
+    Main.eval('using GeometryBasics ')
+    Main.eval('using Printf, Plots, CSV, Tables, ProgressBars, Revise ')
+    Main.eval('using Random ')
+
+    Main.eval('using DataFrames, StatsPlots, Interpolations ')
+
+    Main.eval('include("HydroCalc.jl")')
+    Main.eval('include("SimWExt.jl")')
+    Main.eval('include("PIDCtlr.jl")')
+    Main.eval('include("UVMSPlotting.jl")')
+    Main.eval('include("HelperFuncs.jl")')
+    Main.eval('include("Noiser.jl")')
+
+    Main.eval('include("UVMSsetup.jl")')
+    Main.eval('include("ConfigFiles/MagicNumPitchVal.jl")')
+    Main.eval('include("ConfigFiles/ConstMagicNums.jl")')
+    Main.eval('include("ConfigFiles/MagicNumBlueROVHardware.jl")')
+    Main.eval('include("ConfigFiles/MagicNumAlpha.jl")')
+
+    Main.eval('trajparsingfile = joinpath("..", "hinsdale_post_processing", "gettrajparamsfromyaml.jl") ')
+    Main.eval('interpolationfile = joinpath("..", "hinsdale_post_processing", "mocap_interpolation.jl") ')
+    Main.eval('simhelperfuncsfile = joinpath("..", "hinsdale_post_processing", "simcomparisonfuncs.jl") ')
+    Main.eval('include(trajparsingfile) ')
+    Main.eval('include(interpolationfile) ')
+
+    Main.eval('urdf_file = joinpath("..","..","urdf", "blue_rov_hardware_fixedjaw_pythonhack.urdf") ')
 
     # ----------------------------------------------------------
     #                 One-Time Mechanism Setup
