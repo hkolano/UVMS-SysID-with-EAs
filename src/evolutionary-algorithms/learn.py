@@ -178,7 +178,7 @@ def setupJulia():
     Main.eval('using Printf')
     # This Pkg.add line should not be necessary, but without it we get 
     # julia.core.JuliaError: Exception 'LoadError: InitError: UndefVarError: GR_jll not defined
-    Main.eval('Pkg.add("GR")')
+    Main.eval('import Pkg; Pkg.add("GR")')
     Main.eval('using GR')
     Main.eval('using Plots')
     Main.eval('CSV')
