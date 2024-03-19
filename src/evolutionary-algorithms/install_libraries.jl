@@ -1,3 +1,4 @@
+using Pkg
 Pkg.add(Pkg.PackageSpec(;name="CSV", version="0.10.11"))
 Pkg.add(Pkg.PackageSpec(;name="CoordinateTransformations", version="0.6.3"))
 Pkg.add(Pkg.PackageSpec(;name="DataFrames", version="1.6.1"))
