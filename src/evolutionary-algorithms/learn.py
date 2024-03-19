@@ -652,7 +652,7 @@ toolbox.register("select", tools.selTournament, tournsize=3)
 toolbox.register("evaluate", evalConfigSingleObj, trajectory_names=["_alt_001-0"])
 
 # Initialize a population
-population_size = 2
+population_size = 50
 population = toolbox.population(n=1)
 # Replace the first individual's parameters with the default parameters
 population[0][:] = default_params_individual[:]
@@ -696,7 +696,7 @@ with open(save_dir+"/best_solution.csv", 'a') as file:
     file.write(str(0)+","+individual_str+'\n')
 
 # Number of generations after generation 0 (which is initial population)
-NGEN=3
+NGEN=5000
 for gen in range(NGEN):
     # This is the typical generations loop
     # Run this for a set number of generations
