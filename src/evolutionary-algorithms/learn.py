@@ -4,8 +4,8 @@
 from pathlib import Path
 import os
 from julia.api import Julia
-# Julia(runtime=os.path.expanduser("~")+'/julia-1.8.2/bin/julia-1.8.2',compiled_modules=False)
-Julia(compiled_modules=False)
+Julia(runtime=os.path.expanduser("~")+'/julia-1.8.2/bin/julia-1.8.2',compiled_modules=False)
+# Julia(compiled_modules=False)
 from julia import Main
 import numpy as np
 
