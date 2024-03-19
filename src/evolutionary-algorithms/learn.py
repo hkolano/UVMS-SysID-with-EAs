@@ -168,19 +168,13 @@ def setupJulia():
     # ----------------------------------------------------------
     #                     Import Libraries
     # ----------------------------------------------------------
-
-    # Main.eval('using Pkg')
-    # Main.eval('Pkg.activate(".")')
     Main.eval('using RigidBodyDynamics, Rotations ')
     Main.eval('using LinearAlgebra, StaticArrays, DataStructures ')
     Main.eval('using MeshCat, MeshCatMechanisms, MechanismGeometries ')
     Main.eval('using CoordinateTransformations ')
     Main.eval('using GeometryBasics ')
     Main.eval('using Printf')
-    # This Pkg.add line should not be necessary, but without it we get 
-    # julia.core.JuliaError: Exception 'LoadError: InitError: UndefVarError: GR_jll not defined
-    # Main.eval('import Pkg; Pkg.add("GR")')
-    # Main.eval('using GR')
+    # These try excepts are to get the plots package to load in properly
     try:
         Main.eval('using GR_jll')
     except:
