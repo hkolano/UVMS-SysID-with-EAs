@@ -181,6 +181,14 @@ def setupJulia():
     # julia.core.JuliaError: Exception 'LoadError: InitError: UndefVarError: GR_jll not defined
     # Main.eval('import Pkg; Pkg.add("GR")')
     # Main.eval('using GR')
+    try:
+        Main.eval('using GR_jll')
+    except:
+        pass
+    try:
+        Main.eval('using GR')
+    except:
+        pass
     Main.eval('using Plots')
     Main.eval('using CSV')
     Main.eval('using Tables')
