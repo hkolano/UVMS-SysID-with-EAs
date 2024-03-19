@@ -189,6 +189,10 @@ def setupJulia():
         Main.eval('using GR')
     except:
         pass
+    try:
+        Main.eval('using Plots')
+    except:
+        pass
     Main.eval('using Plots')
     Main.eval('using CSV')
     Main.eval('using Tables')
