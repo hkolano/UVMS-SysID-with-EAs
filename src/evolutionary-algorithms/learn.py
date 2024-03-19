@@ -4,8 +4,8 @@
 from pathlib import Path
 import os
 from julia.api import Julia
-Julia(runtime=os.path.expanduser("~")+'/julia-1.8.2/bin/julia-1.8.2',compiled_modules=False)
-# Julia(compiled_modules=False)
+# Julia(runtime=os.path.expanduser("~")+'/julia-1.8.2/bin/julia-1.8.2',compiled_modules=False)
+Julia(compiled_modules=False)
 from julia import Main
 import numpy as np
 
@@ -169,8 +169,8 @@ def setupJulia():
     #                     Import Libraries
     # ----------------------------------------------------------
 
-    Main.eval('using Pkg')
-    Main.eval('Pkg.activate(".")')
+    # Main.eval('using Pkg')
+    # Main.eval('Pkg.activate(".")')
     Main.eval('using RigidBodyDynamics, Rotations ')
     Main.eval('using LinearAlgebra, StaticArrays, DataStructures ')
     Main.eval('using MeshCat, MeshCatMechanisms, MechanismGeometries ')
@@ -179,13 +179,13 @@ def setupJulia():
     Main.eval('using Printf')
     # This Pkg.add line should not be necessary, but without it we get 
     # julia.core.JuliaError: Exception 'LoadError: InitError: UndefVarError: GR_jll not defined
-    Main.eval('import Pkg; Pkg.add("GR")')
-    Main.eval('using GR')
+    # Main.eval('import Pkg; Pkg.add("GR")')
+    # Main.eval('using GR')
     Main.eval('using Plots')
-    Main.eval('CSV')
-    Main.eval('Tables')
-    Main.eval('ProgressBars')
-    Main.eval('Revise')
+    Main.eval('using CSV')
+    Main.eval('using Tables')
+    Main.eval('using ProgressBars')
+    Main.eval('using Revise')
     Main.eval('using Random ')
 
     Main.eval('using DataFrames, StatsPlots, Interpolations ')
