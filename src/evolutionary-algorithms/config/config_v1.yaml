@@ -1,0 +1,7 @@
+# This file is an example of a config for running the evolutionary algorithm (EA)
+# You would put this file in a folder where you want the EA to save the results to
+hyperparameters:
+  number_of_generations: 5000
+  mutation_probability: 0.1
+  crossover_probability: 0.5
+  population_size: 50

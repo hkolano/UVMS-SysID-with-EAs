@@ -1,4 +1,4 @@
-"""This block just sets up and runs the julia sim to get the variables we're interested in tracking"""
+"""This code sets up the main evolutionary algorithm learning loop for the bluerov dynamic parameters"""
 
 # First just trying to call Julia to see if we can call it from python
 from pathlib import Path
@@ -8,6 +8,9 @@ from julia.api import Julia
 Julia(compiled_modules=False)
 from julia import Main
 import numpy as np
+import os
+import random
+from deap import creator, base, tools, algorithms
 
 def individualListToDict(individual_list_format):
     """This takes in an individual as a list of parameters and turns it into a dictionary for evaluation"""
@@ -249,7 +252,7 @@ def evalConfig(individual, trajectory_names):
     The individual is a dictionary full of configuration parameters for the simulator dynamics. The
     trajectories are specified by name. Valid names are hard-coded according to what was collected
     at Hinsdale. The output is a tuple of overall mean-square error
-    
+
     Given an individual (configuration dictionary with specific dynamic parameters), and a set of trajectories to run on, this
     function computes the simulated alpha arm joint positions, and blue rov orientation.
 
@@ -369,7 +372,7 @@ def evalConfig(individual, trajectory_names):
 
     # Executing for loop (higher level) in python
     # Executing each portion of the for loop (lower level) in julia
-    # I think this portion is what actually runs the simulator for each 
+    # I think this portion is what actually runs the simulator for each
     # Of the specified trajectories
     all_imu_df = []
     all_js_df = []
@@ -459,7 +462,7 @@ def evalConfig(individual, trajectory_names):
         # 11-20: Actual velocity data (vs)
         # 21-30: Noisy position data (noisy_qs)
         # 31-40: Noisy velocity data (noisy_vs)
-        # 41-44: Desired velocities 
+        # 41-44: Desired velocities
 
         Main.eval('deleteat!(sim_df, 1:2:length(sim_df[!,:time_secs]))')
         Main.eval('const_dt_imu_df = interp_at_timesteps(sim_df[!,:time_secs], imu_df, [:roll, :pitch])')
@@ -479,7 +482,7 @@ def evalConfig(individual, trajectory_names):
     q7 joint E
     q8 joint D
     q9 joint C
-    q10 joint B 
+    q10 joint B
     """
 
     # Note: The imu_df and js_df are interpolated so they have a time column
@@ -609,11 +612,7 @@ default_params_dict = {
     }
 }
 default_params_individual = individualDictToList(default_params_dict)
-import os, psutil
-process = psutil.Process()
 
-import random
-from deap import creator, base, tools, algorithms
 
 # https://deap.readthedocs.io/en/master/tutorials/basic/part1.html
 # This is a link to the docs I'm using
@@ -730,7 +729,7 @@ for gen in range(NGEN):
         with open(save_dir+"/best_solution.csv", 'a') as file:
             individual_str = ','.join([str(x) for x in top1])
             file.write(str(gen+1)+","+individual_str+'\n')
-    
+
     population = toolbox.select(offspring, k=len(population))
     # Then we select the offspring, presumably based on fitness, and we select
     # the amount equal to the amount we need in the population
