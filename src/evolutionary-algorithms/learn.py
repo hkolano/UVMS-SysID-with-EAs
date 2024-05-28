@@ -11,6 +11,7 @@ import numpy as np
 import os
 import random
 from deap import creator, base, tools, algorithms
+import csv
 
 def individualListToDict(individual_list_format):
     """This takes in an individual as a list of parameters and turns it into a dictionary for evaluation"""
@@ -173,31 +174,18 @@ def setupJulia():
     # ----------------------------------------------------------
     Main.eval('using RigidBodyDynamics, Rotations ')
     Main.eval('using LinearAlgebra, StaticArrays, DataStructures ')
-    Main.eval('using MeshCat, MeshCatMechanisms, MechanismGeometries ')
+    # Main.eval('using MeshCat, MeshCatMechanisms, MechanismGeometries ')
+    Main.eval('using MechanismGeometries')
     Main.eval('using CoordinateTransformations ')
     Main.eval('using GeometryBasics ')
     Main.eval('using Printf')
-    # These try excepts are to get the plots package to load in properly
-    try:
-        Main.eval('using GR_jll')
-    except:
-        pass
-    try:
-        Main.eval('using GR')
-    except:
-        pass
-    try:
-        Main.eval('using Plots')
-    except:
-        pass
-    Main.eval('using Plots')
     Main.eval('using CSV')
     Main.eval('using Tables')
     Main.eval('using ProgressBars')
     Main.eval('using Revise')
     Main.eval('using Random ')
 
-    Main.eval('using DataFrames, StatsPlots, Interpolations ')
+    Main.eval('using DataFrames, Interpolations ')
 
     Main.eval('include("HydroCalc.jl")')
     Main.eval('include("SimWExt.jl")')
@@ -526,211 +514,121 @@ def evalConfigSingleObj(individual, trajectory_names):
     mse_roll, mse_pitch, mse_joint_e, mse_joint_d, mse_joint_c, mse_joint_b = evalConfig(individual, trajectory_names)
     return np.sum([mse_roll, mse_pitch, mse_joint_e, mse_joint_d, mse_joint_c, mse_joint_b]),
 
-# This needs to be called before running evalConfig(). This is the one time setup of all the necessary libraries
-# and parameters for running the eval code multiple times
-setupJulia()
+def saveGeneration(config, population, gen_num):
+    gen_save_dir = os.path.join( os.path.expanduser(config) , "gen_"+str(gen_num)+".csv" )
+    header = ["individual_index"] + \
+        ["cob_vec_dict:vehicle:0", "cob_vec_dict:vehicle:1", "cob_vec_dict:vehicle:2"] + \
+        ["cob_vec_dict:foamL:0", "cob_vec_dict:foamL:1", "cob_vec_dict:foamL:2"] + \
+        ["cob_vec_dict:foamR:0", "cob_vec_dict:foamR:1", "cob_vec_dict:foamR:2"] + \
+        ["cob_vec_dict:shoulder:0", "cob_vec_dict:shoulder:1", "cob_vec_dict:shoulder:2"] + \
+        ["cob_vec_dict:upperarm:0", "cob_vec_dict:upperarm:1", "cob_vec_dict:upperarm:2"] + \
+        ["cob_vec_dict:elbow:0", "cob_vec_dict:elbow:1", "cob_vec_dict:elbow:2"] + \
+        ["cob_vec_dict:wrist:0", "cob_vec_dict:wrist:1", "cob_vec_dict:wrist:2"] + \
+        ["cob_vec_dict:jaw:0", "cob_vec_dict:jaw:1", "cob_vec_dict:jaw:2"] + \
+        ["buoyancy_mag_dict:vehicle", "buoyancy_mag_dict:foamL", "buoyancy_mag_dict:foamR"] + \
+        ["buoyancy_mag_dict:shoulder", "buoyancy_mag_dict:upperarm", "buoyancy_mag_dict:armbase"] + \
+        ["buoyancy_mag_dict:jaw", "buoyancy_mag_dict:wrist", "buoyancy_mag_dict:elbow"] + \
+        ["com_vec_dict:vehicle:0", "com_vec_dict:vehicle:1", "com_vec_dict:vehicle:2"] + \
+        ["com_vec_dict:weightCA:0", "com_vec_dict:weightCA:1", "com_vec_dict:weightCA:2"] + \
+        ["com_vec_dict:weightBL:0", "com_vec_dict:weightBL:1", "com_vec_dict:weightBL:2"] + \
+        ["com_vec_dict:weightBR:0", "com_vec_dict:weightBR:1", "com_vec_dict:weightBR:2"] + \
+        ["com_vec_dict:dvl:0", "com_vec_dict:dvl:1", "com_vec_dict:dvl:2"] + \
+        ["com_vec_dict:dvlbracket:0", "com_vec_dict:dvlbracket:1", "com_vec_dict:dvlbracket:2"] + \
+        ["com_vec_dict:armbase:0", "com_vec_dict:armbase:1", "com_vec_dict:armbase:2"] + \
+        ["com_vec_dict:shoulder:0", "com_vec_dict:shoulder:1", "com_vec_dict:shoulder:2"] + \
+        ["com_vec_dict:upperarm:0", "com_vec_dict:upperarm:1", "com_vec_dict:upperarm:2"] + \
+        ["com_vec_dict:elbow:0", "com_vec_dict:elbow:1", "com_vec_dict:elbow:2"] + \
+        ["com_vec_dict:wrist:0", "com_vec_dict:wrist:1", "com_vec_dict:wrist:2"] + \
+        ["com_vec_dict:jaw:0", "com_vec_dict:jaw:1", "com_vec_dict:jaw:2"] + \
+        ["com_vec_dict:jaw_wrt_wrist:0", "com_vec_dict:jaw_wrt_wrist:1", "com_vec_dict:jaw_wrt_wrist:2"] + \
+        ["grav_mag_dict:vehicle", "grav_mag_dict:weightCA", "grav_mag_dict:weightBL", "grav_mag_dict:weightBR"] + \
+        ["grav_mag_dict:dvl", "grav_mag_dict:dvlbracket", "grav_mag_dict:armbase", "grav_mag_dict:shoulder"] + \
+        ["grav_mag_dict:upperarm", "grav_mag_dict:elbow", "grav_mag_dict:jaw", "grav_mag_dict:wrist"] + \
+        ["drag:d_lin_angular", "drag:d_nonlin_angular", "drag:d_lin_coeffs", "drag:d_nonlin_coeffs"] + \
+        ["link_volumes:shoulder", "link_volumes:upperarm", "link_volumes:elbow", "link_volumes:wrist"] + \
+        ["link_volumes:armbase", "link_volumes:jaw"] + \
+        ["link_masses:shoulder", "link_masses:upperarm", "link_masses:elbow", "link_masses:wrist"] + \
+        ["link_masses:armbase", "link_masses:jaw"] + \
+        ["link_drags:shoulder:0", "link_drags:shoulder:1", "link_drags:shoulder:2"] + \
+        ["link_drags:upperarm:0", "link_drags:upperarm:1", "link_drags:upperarm:2"] + \
+        ["link_drags:elbow:0", "link_drags:elbow:1", "link_drags:elbow:2"] + \
+        ["link_drags:wrist:0", "link_drags:wrist:1", "link_drags:wrist:2"] + \
+        ["link_drags:jaw:0", "link_drags:jaw:1", "link_drags:jaw:2"] + \
+        ["fitness"]
+    with open(gen_save_dir, 'w', newline='') as file:
+        w = csv.writer(file, delimiter=',', quotechar='"')
+        w.writerow(row=header)
+        for count, individual in enumerate(population):
+            row = [str(count)] + list(individual) + [individual.fitness.values[0]]
+            w.writerow(row=row)
 
-default_params_dict = {
-    "cob_vec_dict": {
-        "vehicle": [0.0074, 0.0, 0.02],
-        "foamL": [0.0, 0.11, 0.027], # guess
-        "foamR": [0.0, -0.11, 0.027], #guess
-        "shoulder": [-0.001, -0.003, 0.032],
-        "upperarm": [0.073, 0.0, -0.002],
-        "elbow": [0.003, 0.001, -0.017],
-        "wrist": [0.0, 0.0, -0.098],
-        "jaw": [0.0, 0.0, 0.0]
-    },
-    "buoyancy_mag_dict": {
-        "shoulder": 0.17605026,
-        "upperarm": 1.9854557100000003,
-        "foamR": 8.86,
-        "armbase": 1.97567514,
-        "jaw": 0.19561140000000005,
-        "wrist": 1.5159883500000002,
-        "vehicle": 128.33442000000002, #volume times gravity
-        "foamL": 8.46,
-        "elbow": 0.24451425000000004
-    },
-    "com_vec_dict": {
-        "armbase": [-0.075, -0.006, -0.003],
-        "vehicle": [0.0, 0.0, 0.0],
-        "shoulder": [0.005, -0.001, 0.016],
-        "upperarm": [0.073, 0.0, 0.0],
-        "wrist": [0.0, 0.0, -0.098],
-        "elbow": [0.017, -0.026, -0.002],
-        "jaw": [0.0, 0.0, 0.0],
-        "jaw_wrt_wrist": [0.0, 0.0, -0.19],
-        "weightCA": [-0.2, 0.165, -0.075], # guess
-        "weightBL": [-0.0975, 0.1275, -0.1325], # guess
-        "weightBR": [-0.0975, -0.1275, -0.1325], # guess
-        "dvlbracket": [-0.1542, 0.0439, -0.0795], # guess
-        "dvl": [-0.1887, 0.0439, -0.0595], # guess
-    },
-    "grav_mag_dict": {
-        "armbase": 3.3452100000000002,
-        "vehicle": 129.1977, # Weight * gravity
-        "shoulder": 1.90314,
-        "upperarm": 4.20849,
-        "weightBR": 1.62,
-        "dvl": 0.69,
-        "elbow": 1.1281500000000002,
-        "jaw": 0.49050000000000005,
-        "weightCA": 3.24,
-        "weightBL": 1.62,
-        "wrist": 3.2667300000000004,
-        "dvlbracket": 1.01
-    },
-    "drag": {
-        "d_lin_angular": 0.07,
-        "d_nonlin_angular": 1.55,
-        "d_lin_coeffs": [4.03, 6.22, 5.18], # The next 3 coefficients are d_lin_angular
-        "d_nonlin_coeffs": [18.18, 21.66, 36.99] # The next 3 coefficients are d_nonlin_angular
-    },
-    "link_volumes": {
-        "shoulder": 0.018,
-        "upperarm": 0.203,
-        "elbow": 0.025,
-        "wrist": 0.155,
-        "armbase": 0.202,
-        "jaw": 0.02
-    },
-    "link_masses": {
-        "shoulder": 0.194,
-        "upperarm": 0.429,
-        "elbow": 0.115,
-        "wrist": 0.333,
-        "armbase": 0.341,
-        "jaw": 0.05
-    },
-    "link_drags": {
-        "shoulder": [0.26, 0.26, 0.3],
-        "upperarm": [0.3, 1.6, 1.6],
-        "elbow": [0.26, 0.3, 0.26],
-        "wrist": [1.8, 1.8, 0.3],
-        "jaw": [.05, .05, .05]
-    }
-}
-default_params_individual = individualDictToList(default_params_dict)
+def main(config):
+    # This needs to be called before running evalConfig(). This is the one time setup of all the necessary libraries
+    # and parameters for running the eval code multiple times
+    setupJulia()
 
+    # Set up some helpers for the evolutionary algorithm
+    creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
+    creator.create("Individual", list, fitness=creator.FitnessMin)
 
-# https://deap.readthedocs.io/en/master/tutorials/basic/part1.html
-# This is a link to the docs I'm using
+    toolbox = base.Toolbox()
+    toolbox.register("attr_float", random.random)
+    toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_float, n=119)
+    toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
-# Setup the directory for saving data
-save_dir = os.path.expanduser("~")+"/hpc-share/uvms/preliminary/trial_0"
-if not os.path.isdir(save_dir):
-    os.makedirs(save_dir)
-# Create csv files for saving data
-with open(save_dir+"/fitness.csv", 'w') as file:
-    file.write("generation, top_fitness")
-    file.write('\n')
-with open(save_dir+"/best_solution.csv", 'w') as file:
-    file.write("generation, best_solution")
-    file.write('\n')
+    toolbox.register("mate", tools.cxTwoPoint)
+    toolbox.register("mutate", tools.mutGaussian, mu=0.0, sigma=0.2, indpb=0.2)
+    toolbox.register("select", tools.selTournament, tournsize=3)
+    toolbox.register("evaluate", evalConfigSingleObj, trajectory_names=config["ea_parameters"]["trajectory_names"])
 
-solution_save_interval = 50 # generations
+    # Initialize the population
+    population_size = 50
+    if config["ea_parameters"]["start_with_default_params"]:
+        default_params_dict = config["default_dynamic_params"]
+        default_params_individual = individualDictToList(default_params_dict)
+        population = toolbox.population(n=1)
+        # Replace the first individual's parameters with the default parameters
+        population[0][:] = default_params_individual[:]
+        # Create a n-1 size population that has mutations of the default parameters
+        mutated_default_param_inds = algorithms.varAnd(population*(population_size-1), toolbox, cxpb=0.5, mutpb=0.1)
+        # Put both populations together
+        population = population + mutated_default_param_inds
+    else:
+        population = toolbox.population(n=population_size)
 
-creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
-creator.create("Individual", list, fitness=creator.FitnessMin)
+    # Evaluate the starting population first at generation 0
+    fits = toolbox.map(toolbox.evaluate, population)
 
-toolbox = base.Toolbox()
-toolbox.register("attr_float", random.random)
-toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_float, n=119)
-toolbox.register("population", tools.initRepeat, list, toolbox.individual)
-
-toolbox.register("mate", tools.cxTwoPoint)
-toolbox.register("mutate", tools.mutGaussian, mu=0.0, sigma=0.2, indpb=0.2)
-toolbox.register("select", tools.selTournament, tournsize=3)
-toolbox.register("evaluate", evalConfigSingleObj, trajectory_names=["_alt_001-0"])
-
-# Initialize a population
-population_size = 50
-population = toolbox.population(n=1)
-# Replace the first individual's parameters with the default parameters
-population[0][:] = default_params_individual[:]
-# Create a n-1 size population that has mutations of the default parameters
-mutated_default_param_inds = algorithms.varAnd(population*(population_size-1), toolbox, cxpb=0.5, mutpb=0.1)
-# Put both populations together
-population = population + mutated_default_param_inds
-
-fitnesses = []
-best_individuals = []
-
-# Evaluate the starting population first at generation 0
-fits = toolbox.map(toolbox.evaluate, population)
-
-# Assign fitnesses
-for fit, ind in zip(fits, population):
-    ind.fitness.values = fit
-
-# Rename to keep naming consistent
-offspring = population
-
-# Then perform the mutations
-population = toolbox.select(offspring, k=len(population))
-
-
-# Append the best solution and its fitness after evaluation but before selection
-top1 = tools.selBest(offspring, k=1)[0]
-# This is just getting the best one from the population
-# and then taking it out of the list form so
-# we can print it nicely to see what the solution is
-fitnesses.append(top1.fitness.values[0])
-best_individuals.append(top1)
-
-# Save the best solution and the fitness of generation 0
-with open(save_dir+"/fitness.csv", 'a') as file:
-    fitness_str = ','.join([str(0), str(top1.fitness.values[0])])
-    file.write(fitness_str+'\n')
-
-with open(save_dir+"/best_solution.csv", 'a') as file:
-    individual_str = ','.join([str(x) for x in top1])
-    file.write(str(0)+","+individual_str+'\n')
-
-# Number of generations after generation 0 (which is initial population)
-NGEN=5000
-for gen in range(NGEN):
-    # This is the typical generations loop
-    # Run this for a set number of generations
-
-    offspring = algorithms.varAnd(population, toolbox, cxpb=0.5, mutpb=0.1)
-    # not sure what varAnd does. Also not sure what the algorithms library is. Looks like it's something within DEAP
-    # offspring... hm.. not sure how that works in this context
-
-    fits = toolbox.map(toolbox.evaluate, offspring)
-    # mapping the evaluate function to each of the offspring?
-    # What is the difference between the offspring and the population?
-    # If it is the offspring after selection, then I would expect to see some selection
-    # operation performed on the population and offspring being the output of that
-    # ah, fits = fitnesses
-
-    for fit, ind in zip(fits, offspring):
+    # Assign fitnesses
+    for fit, ind in zip(fits, population):
         ind.fitness.values = fit
-        # So I guess this is how we assign a fitness to each offspring?
-        # Before we only calculated the fitnesses but didn't do anything with them
-        # We just had them in a list
 
+    # This is generation 0. Let's save it
+    saveGeneration(config, population, gen_num=0)
 
-    # Append the best solution and its fitness after evaluation but before selection
-    top1 = tools.selBest(offspring, k=1)[0]
-    # This is just getting the best one from the population
-    # and then taking it out of the list form so
-    # we can print it nicely to see what the solution is
-    fitnesses.append(top1.fitness.values[0])
-    best_individuals.append(top1)
+    # Number of generations after generation 0 (which is initial population)
+    NGEN=5000
+    for gen_count in range(NGEN):
+        # This is the typical generations loop
+        # Run this for a set number of generations
 
-    # Save the best solution and the fitness at regular intervals
-    with open(save_dir+"/fitness.csv", 'a') as file:
-        fitness_str = ','.join([str(gen+1), str(top1.fitness.values[0])])
-        file.write(fitness_str+'\n')
+        offspring = algorithms.varAnd(population, toolbox, cxpb=0.5, mutpb=0.1)
+        # not sure what varAnd does. Also not sure what the algorithms library is. Looks like it's something within DEAP
+        # offspring... hm.. not sure how that works in this context
 
-    if (gen+1) % solution_save_interval == 0:
-        with open(save_dir+"/best_solution.csv", 'a') as file:
-            individual_str = ','.join([str(x) for x in top1])
-            file.write(str(gen+1)+","+individual_str+'\n')
+        fits = toolbox.map(toolbox.evaluate, offspring)
+        # mapping the evaluate function to each of the offspring?
+        # What is the difference between the offspring and the population?
+        # If it is the offspring after selection, then I would expect to see some selection
+        # operation performed on the population and offspring being the output of that
+        # ah, fits = fitnesses
 
-    population = toolbox.select(offspring, k=len(population))
-    # Then we select the offspring, presumably based on fitness, and we select
-    # the amount equal to the amount we need in the population
+        for fit, ind in zip(fits, offspring):
+            ind.fitness.values = fit
+
+        population = toolbox.select(offspring, k=len(population))
+        # Then we select the offspring, presumably based on fitness, and we select
+        # the amount equal to the amount we need in the population
+
+        saveGeneration(config, population, gen_num=gen_count+1)
 
