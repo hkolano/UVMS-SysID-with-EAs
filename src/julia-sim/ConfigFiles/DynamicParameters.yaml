@@ -1,0 +1,67 @@
+cob_vec_dict:
+  vehicle: [0.0074, 0.0, 0.02]
+  foamL: [0.00, 0.11, 0.027] # guess
+  foamR: [0.00, -0.11, 0.027] # guess
+  shoulder: [-0.001, -0.003, 0.032]
+  upperarm: [0.073, 0.0, -0.002]
+  elbow: [0.003, 0.001, -0.017]
+  wrist: [0.0, 0.0, -0.098]
+  jaw: [0.0, 0.0, 0.0]
+buoyancy_mag_dict:
+  vehicle: 128.33442000000002 # 13.082*9.81 (volume*gravity)
+  foamL: 8.46
+  foamR: 8.86 # 8.66+.2
+link_volumes: # For calculating buoyancy
+  shoulder: 0.018 # volume in L
+  upperarm: 0.203
+  elbow: 0.025
+  wrist: 0.155
+  armbase: 0.202
+  jaw: 0.02 # reasonable estimate
+  # To turn these into buoyancy:
+  # f = 997 (kg/m^3) * 9.81 (m/s^2) * V_in_L *.001 (m^3) = kg m / s^2
+  # for (k,v) in link_volumes
+  #   buoyancy_mag_dict[k] = v*rho*9.81*.001
+  # end
+com_vec_dict:
+  vehicle: [0.0, 0.0, 0.0]
+  weightCA: [-0.20, 0.165, -0.075] # guess
+  weightBL: [-0.0975, 0.1275, -0.1325] # guess
+  weightBR: [-0.0975, -0.1275, -0.1325] # guess
+  dvl: [-0.1887, 0.0439, -0.0595] # guess [-.1887, .0439, -.1095+0.05]
+  dvlbracket: [-0.1542, 0.0439, -0.0795] # guess [-.1887+.0345, .0439, -.1295+.05]
+  armbase: [-0.075, -0.006, -0.003]
+  shoulder: [0.005, -0.001, 0.016]
+  upperarm: [0.073, 0.0, 0.0]
+  elbow: [0.017, -0.026, -0.002]
+  wrist: [0.0, 0.0, -0.098]
+  jaw: [0.0, 0.0, 0.0]
+  jaw_wrt_wrist: [0.0, 0.0, -0.190]
+grav_mag_dict:
+  vehicle: 129.1977 # 13.17*9.81 (weight*gravity)
+  weightCA: 3.24 # water weight
+  weightBL: 1.62 # water weight
+  weightBR: 1.62 # water weight
+  dvl: 0.69 # water weight
+  dvlbracket: 1.01 # water weight
+link_masses: # For calculating gravitational forces
+  shoulder: 0.194
+  upperarm: 0.429
+  elbow: 0.115
+  wrist: 0.333
+  armbase: 0.341
+  jaw: 0.05
+  # To turn into gravity
+  # for (k,v) in link_masses
+  #   grav_mag_dict[k] = v*9.81
+  # end
+d_lin_angular: 0.07
+d_nonlin_angular: 1.55
+d_lin_coeffs: [4.03, 6.22, 5.18] # Next 3 elements are d_lin_angular
+d_nonlin_coeffs: [18.18, 21.66, 36.99] # Next 3 elements are d_nonlin_angular
+link_drags:
+  shoulder: [0.26, 0.26, 0.3]
+  upperarm: [0.3, 1.6, 1.6]
+  elbow: [0.26, 0.3, 0.26]
+  wrist: [1.8, 1.8, 0.3]
+  jaw: [.05, .05, .05]

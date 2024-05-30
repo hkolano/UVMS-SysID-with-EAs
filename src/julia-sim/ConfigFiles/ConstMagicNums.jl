@@ -26,7 +26,7 @@ max_traj_duration = 20. # maximum number of seconds for a quintic trajectory to 
 # ----------------------------------------------------------
 # System-specific functions and information
 # ----------------------------------------------------------
-                     
+
 # equilibrium of unmodified ROV + Alpha arm
 function reset_to_equilibrium!(state)
     zero!(state)
@@ -43,8 +43,8 @@ end
 #     torques[1] = 0.     # roll
 #     torques[2] = 0.     # pitch
 #     torques[3] = 0.     # yaw
-#     torques[4] = -2.3   # vehicle X 
-#     torques[5] = 0.0    # Vehicle Y 
+#     torques[4] = -2.3   # vehicle X
+#     torques[5] = 0.0    # Vehicle Y
 #     torques[6] = 5.2    # Vehicle Z
 #     torques[7] = -.002  # Base joint (Joint E)
 #     torques[8] = -.32255 # Shoulder joint (Joint D)
@@ -56,12 +56,12 @@ end
 # end
 
 
-# Sensor noise distributions 
+# Sensor noise distributions
 # Encoder --> joint position noise -integration-> joint velocity noise
-# Gyroscope --> vehicle body vel noise 
-v_ang_vel_noise_dist = Distributions.Normal(0, .0013) # 75 mdps (LSM6DSOX)
-arm_pos_noise_dist = Distributions.Normal(0, .0017/6) # .1 degrees, from Reach website
-accel_noise_dist = Distributions.Normal(0, 0.017658/10) # 1.8 mg = .0176 m/s2 (LSM6DSOX)
+# Gyroscope --> vehicle body vel noise
+v_ang_vel_noise_dist = Distributions.Normal(0, 0) # .0013) # 75 mdps (LSM6DSOX)
+arm_pos_noise_dist = Distributions.Normal(0, 0) # .0017/6) # .1 degrees, from Reach website
+accel_noise_dist = Distributions.Normal(0, 0) # 0.017658/10) # 1.8 mg = .0176 m/s2 (LSM6DSOX)
 
-gyro_rand_walk_dist = Distributions.Normal(0, .000001)
+gyro_rand_walk_dist = Distributions.Normal(0, 0) # .000001)
 accel_rand_walk_dist = Distributions.Normal(0, 0)#0.00001)
