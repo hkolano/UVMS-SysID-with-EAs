@@ -8,7 +8,7 @@ mutable struct jointState
 end
 
 mutable struct Waypoints
-    start::jointState 
+    start::jointState
     goal::jointState
 end
 
@@ -18,24 +18,35 @@ mutable struct quinticTrajParams
     T::Float64      # Duration of the trajectory
 end
 
-num_trajectory_dofs = num_velocities(mech_blue_alpha)-6
+# ----------------------------------------------------------
+#      Helper struct and creation function to get important variables
+# ----------------------------------------------------------
 
-equil_pose = zeros(num_trajectory_dofs)
-equil_pt = jointState(equil_pose, zeros(num_trajectory_dofs))
-extended_pt = jointState([0.01, 1.5, 2.6, 0.01, 0.], zeros(num_trajectory_dofs))
+struct TrajGenJoints
+    num_trajectory_dofs
+    equil_pt
+end
+
+function create_traj_gen_joints(mech_blue_alpha)::TrajGenJoints
+    num_trajectory_dofs = num_velocities(mech_blue_alpha)-6
+
+    equil_pose = zeros(num_trajectory_dofs)
+    equil_pt = jointState(equil_pose, zeros(num_trajectory_dofs))
+    TrajGenJoints(num_trajectory_dofs, equil_pt)
+end
 
 # ----------------------------------------------------------
 #               Point Generation (Joint Space)
 # ----------------------------------------------------------
-""" 
-    gen_rand_feasible_point()
+"""
+    gen_rand_feasible_point(traj_gen_joints)
 
 Randomly generates a jointState, checking for joint and velocity limits.
 """
-function gen_rand_feasible_point()
-    θs = Array{Float64}(undef,num_trajectory_dofs)    
-    dθs = Array{Float64}(undef,num_trajectory_dofs)    
-    for jt_idx in  1:num_trajectory_dofs
+function gen_rand_feasible_point(traj_gen_joints::TrajGenJoints)
+    θs = Array{Float64}(undef,traj_gen_joints.num_trajectory_dofs)
+    dθs = Array{Float64}(undef,traj_gen_joints.num_trajectory_dofs)
+    for jt_idx in  1:traj_gen_joints.num_trajectory_dofs
         dof_name = dof_names[jt_idx+6]
         θs[jt_idx] = rand(joint_lim_dict[dof_name][1]:.001:joint_lim_dict[dof_name][2])
         dθs[jt_idx] = rand(vel_lim_dict[dof_name][1]:.001:vel_lim_dict[dof_name][2])
@@ -44,13 +55,13 @@ function gen_rand_feasible_point()
 end
 
 """
-    gen_rand_feasible_point_at_rest()
+    gen_rand_feasible_point_at_rest(traj_gen_joints)
 
-Randomly generates a jointState where the velocity is 0. 
+Randomly generates a jointState where the velocity is 0.
 """
-function gen_rand_feasible_point_at_rest()
-    jS = gen_rand_feasible_point()
-    jS.dθs = zeros(num_trajectory_dofs)
+function gen_rand_feasible_point_at_rest(traj_gen_joints::TrajGenJoints)
+    jS = gen_rand_feasible_point(traj_gen_joints)
+    jS.dθs = zeros(traj_gen_joints.num_trajectory_dofs)
     return jS
 end
 
@@ -58,17 +69,17 @@ end
 #             Waypoint Generation (Joint Space)
 # ----------------------------------------------------------
 """
-Generates a random Waypoint struct. Not advisable to start a trajectory.  
+Generates a random Waypoint struct. Not advisable to start a trajectory.
 """
-function gen_rand_waypoints()
-    Waypoints(gen_rand_feasible_point(), gen_rand_feasible_point())    
+function gen_rand_waypoints(traj_gen_joints::TrajGenJoints)
+    Waypoints(gen_rand_feasible_point(traj_gen_joints), gen_rand_feasible_point(traj_gen_joints))
 end
 
 """
-Generates a random Waypoint struct, starting at rest at the home position. 
+Generates a random Waypoint struct, starting at rest at the home position.
 """
-function gen_rand_waypoints_from_equil()
-    Waypoints(equil_pt, gen_rand_feasible_point()) 
+function gen_rand_waypoints_from_equil(traj_gen_joints::TrajGenJoints)
+    Waypoints(traj_gen_joints.equil_pt, gen_rand_feasible_point(traj_gen_joints))
 end
 
 """
@@ -77,21 +88,21 @@ end
 Generates a Waypoint struct. Starts at rest at the home position; ...
 ends at the provided position (θs) and velocity (dθs) of the arm.
 """
-function set_waypoints_from_equil(θs, dθs)
-    Waypoints(equil_pt, jointState(θs, dθs))
+function set_waypoints_from_equil(traj_gen_joints::TrajGenJoints, θs, dθs)
+    Waypoints(traj_gen_joints.equil_pt, jointState(θs, dθs))
 end
 
-function gen_rand_waypoints_to_rest()
-    Waypoints(equil_pt, gen_rand_feasible_point_at_rest())
+function gen_rand_waypoints_to_rest(traj_gen_joints::TrajGenJoints)
+    Waypoints(traj_gen_joints.equil_pt, gen_rand_feasible_point_at_rest(traj_gen_joints))
 end
 
-function gen_rand_waypoints_at_rest()
-    wp = Waypoints(gen_rand_feasible_point_at_rest(), gen_rand_feasible_point_at_rest())
+function gen_rand_waypoints_at_rest(traj_gen_joints::TrajGenJoints)
+    wp = Waypoints(gen_rand_feasible_point_at_rest(traj_gen_joints), gen_rand_feasible_point_at_rest(traj_gen_joints))
     return wp
 end
 
-function gen_rand_waypoint_from_start(Js::jointState)
-    Waypoints(Js, gen_rand_feasible_point_at_rest())
+function gen_rand_waypoint_from_start(traj_gen_joints::TrajGenJoints, Js::jointState)
+    Waypoints(Js, gen_rand_feasible_point_at_rest(traj_gen_joints))
 end
 
 """
@@ -104,7 +115,7 @@ function save_waypoints(wp::Waypoints, name::String)
     save(string("src/tmp/", name, ".jld"), "start_θs", wp.start.θs, "start_dθs", wp.start.dθs, "end_θs", wp.goal.θs, "end_dθs", wp.goal.dθs)
 end
 
-""" 
+"""
     load_waypoints(name::String)
 
 Load a waypoint from a file. The file must be located in "src/tmp/" and be in JLD file format.
@@ -112,17 +123,17 @@ Load a waypoint from a file. The file must be located in "src/tmp/" and be in JL
 function load_waypoints(name::String)
     wp_raw = load(string("src/tmp/", name, ".jld"))
     new_wp = Waypoints(jointState(wp_raw["start_θs"], wp_raw["start_dθs"]), jointState(wp_raw["end_θs"], wp_raw["end_dθs"]))
-    return new_wp 
+    return new_wp
 end
 
 # ----------------------------------------------------------
 #               Trajectory Generation (Joint Space)
 # ----------------------------------------------------------
-""" 
+"""
     get_coeffs(pts::Waypoints, T, idx)
 
 Given a set of waypoints and a time scaling, determine the time scaling coefficients
-for a quintic trajectory. 
+for a quintic trajectory.
 """
 function get_coeffs(pts::Waypoints, T, idx)
     # λ1 = dθ1/(θ2-θ1)
@@ -154,10 +165,10 @@ end
 """
     get_path!(poses, vels, θ1, θ2, T, a, num_its)
 
-Gets the poses and velocities of the manipulator joints along a potential desired trajectory. 
-Used to check whether the proposed duration exceeds the position or velocity limits of the joints. 
+Gets the poses and velocities of the manipulator joints along a potential desired trajectory.
+Used to check whether the proposed duration exceeds the position or velocity limits of the joints.
 """
-function get_path!(poses, vels, θ1, θ2, T, a, num_its=num_its)
+function get_path!(poses, vels, θ1, θ2, T, a, num_its)
     dt = T/num_its
 
     for i = 1:num_its
@@ -167,24 +178,24 @@ function get_path!(poses, vels, θ1, θ2, T, a, num_its=num_its)
         poses[i] = θ1 + s*(θ2-θ1)
         vels[i] = ds*(θ2-θ1)
     end
-    return poses, vels 
+    return poses, vels
 end
 
 """
     get_desv_at_t(t, p)
-    
-Given a set of trajectory parameters p and a time t, determine what the desired 
-velocity is. 
+
+Given a set of trajectory parameters p and a time t, determine what the desired
+velocity is.
 
 If the parameters is an array of parameters, this handles swiching between parameters
-at the input time. 
+at the input time.
 """
 function get_desv_at_t(t, p::quinticTrajParams)
     # println("Got request for desv. Params $(p))")
     des_vel = zeros(num_velocities(mech_blue_alpha)-6)
     # des_vel[1] = 0.05
     if t <= p.T # If the current time is less than the trajectory duration
-        for i = 1:num_trajectory_dofs # des vel for last joint is always 0
+        for i = 1:traj_gen_joints.num_trajectory_dofs # des vel for last joint is always 0
             ds = vel_scale_at_t(p.a[i,:], t)
             des_vel[i] = ds*(p.wp.goal.θs[i]-p.wp.start.θs[i])
         end
@@ -205,10 +216,9 @@ function get_desv_at_t(t, p_array::Array{quinticTrajParams})
 
     if traj_num <= length(params)
         p = p_array[traj_num]
-    
 
         if t_mod <= p.T # If the current time is less than the trajectory duration
-            for i = 1:num_trajectory_dofs # des vel for last joint is always 0
+            for i = 1:traj_gen_joints.num_trajectory_dofs # des vel for last joint is always 0
                 ds = vel_scale_at_t(p.a[i,:], t_mod)
                 des_vel[i] = ds*(p.wp.goal.θs[i]-p.wp.start.θs[i])
             end
@@ -220,18 +230,18 @@ function get_desv_at_t(t, p_array::Array{quinticTrajParams})
 end
 
 """
-    get_desq_at_t(t, p)
-    
-Given a set of trajectory parameters p and a time t, determine what the desired 
-joint positions are. 
+    get_desq_at_t(traj_gen_joints, t, p)
+
+Given a set of trajectory parameters p and a time t, determine what the desired
+joint positions are.
 
 If the input for p is an array of parameters, this handles swiching between parameters
-at the input time. 
+at the input time.
 """
-function get_desq_at_t(t, p::quinticTrajParams)
+function get_desq_at_t(traj_gen_joints::TrajGenJoints, t, p::quinticTrajParams)
     des_qs = zeros(num_velocities(mech_blue_alpha)-6)
-    if t < p.T 
-        for i = 1:num_trajectory_dofs
+    if t < p.T
+        for i = 1:traj_gen_joints.num_trajectory_dofs
             s = pos_scale_at_t(p.a[i,:], t)
             des_qs[i] = p.wp.start.θs[i] + s*(p.wp.goal.θs[i]-p.wp.start.θs[i])
         end
@@ -239,8 +249,8 @@ function get_desq_at_t(t, p::quinticTrajParams)
     return des_qs
 end
 
-function get_desq_at_t(t, p_array::Array{quinticTrajParams})
-    des_qs = zeros(num_trajectory_dofs+4)
+function get_desq_at_t(traj_gen_joints::TrajGenJoints, t, p_array::Array{quinticTrajParams})
+    des_qs = zeros(traj_gen_joints.num_trajectory_dofs+4)
     traj_num = 1
     for i in 1:length(params)
         if t > swap_times[i]
@@ -252,8 +262,8 @@ function get_desq_at_t(t, p_array::Array{quinticTrajParams})
     if traj_num <= length(params)
         p = p_array[traj_num]
 
-        if t_mod < p.T 
-            for i = 1:num_trajectory_dofs
+        if t_mod < p.T
+            for i = 1:traj_gen_joints.num_trajectory_dofs
                 s = pos_scale_at_t(p.a[i,:], t_mod)
                 des_qs[i+4] = p.wp.start.θs[i] + s*(p.wp.goal.θs[i]-p.wp.start.θs[i])
             end
@@ -273,18 +283,18 @@ function check_lim(vals::Array, lims)
 end
 
 """
-    scale_trajectory(params, poses, vels, max_scale)
+    scale_trajectory(traj_gen_joints, params, poses, vels, max_scale, num_its)
 
 Increases the time scaling of the trajectory by a factor between 1 and max_scale.
 """
-function scale_trajectory(params::quinticTrajParams, poses, vels, max_scale)
-    a = Array{Float64}(undef, num_trajectory_dofs, 6)
+function scale_trajectory(traj_gen_joints::TrajGenJoints, params::quinticTrajParams, poses, vels, max_scale, num_its)
+    a = Array{Float64}(undef, traj_gen_joints.num_trajectory_dofs, 6)
     scale_factor = rand(1:.01:max_scale)
     T = params.T*scale_factor
     # println("Scaling factor: $(scale_factor)")
-    for i in 1:num_trajectory_dofs
+    for i in 1:traj_gen_joints.num_trajectory_dofs
         a[i,:] = get_coeffs(params.wp, T, i)
-        (poses[:,i], vels[:,i]) = get_path!(poses[:,i], vels[:,i], params.wp.start.θs[i], params.wp.goal.θs[i], T, a[i,:])
+        (poses[:,i], vels[:,i]) = get_path!(poses[:,i], vels[:,i], params.wp.start.θs[i], params.wp.goal.θs[i], T, a[i,:], num_its)
     end
     return [quinticTrajParams(a, params.wp, T), poses, vels]
 end
@@ -292,32 +302,32 @@ end
 """
     find_quintic_trajectory(pts, num_its, T_init)
 
-Get the parameters for a quintic trajectory between the two given waypoints. 
+Get the parameters for a quintic trajectory between the two given waypoints.
 
 ...
 # Arguments
 'pts::Waypoints':   Two points in joint space, specified as a Waypoint struct
-'num_its=50':   Number of points in the output poses and vels vectors 
+'num_its=50':   Number of points in the output poses and vels vectors
 'T_init=1':   Minimum trajectory duration
 ...
 """
-function find_quintic_trajectory(pts::Waypoints; num_its=num_its, T_init=1.0)
+function find_quintic_trajectory(pts::Waypoints, num_its; T_init=1.0)
     T = T_init
-    poses = Array{Float64}(undef, num_its, num_trajectory_dofs)
-    vels = Array{Float64}(undef, num_its, num_trajectory_dofs)
+    poses = Array{Float64}(undef, num_its, traj_gen_joints.num_trajectory_dofs)
+    vels = Array{Float64}(undef, num_its, traj_gen_joints.num_trajectory_dofs)
     feasible_ct = 0
-    a = Array{Float64}(undef, num_trajectory_dofs, 6)
+    a = Array{Float64}(undef, traj_gen_joints.num_trajectory_dofs, 6)
 
-    while feasible_ct < num_trajectory_dofs && T < max_traj_duration
+    while feasible_ct < traj_gen_joints.num_trajectory_dofs && T < max_traj_duration
         feasible_ct = 0
-        for i in 1:num_trajectory_dofs
+        for i in 1:traj_gen_joints.num_trajectory_dofs
             dof_name = dof_names[i+6]
             # println("Joint $(i)")
-            # Get trajectory 
+            # Get trajectory
             # @show i
             # @show get_coeffs(pts, T, i)
             a[i,:] = get_coeffs(pts, T, i)
-            (poses[:,i], vels[:,i]) = get_path!(poses[:,i], vels[:,i], pts.start.θs[i], pts.goal.θs[i], T, a[i,:])
+            (poses[:,i], vels[:,i]) = get_path!(poses[:,i], vels[:,i], pts.start.θs[i], pts.goal.θs[i], T, a[i,:], num_its)
 
             # Evaluate if possible
             is_in_range_poses = check_lim(poses[:,i], joint_lim_dict[dof_name])
@@ -329,12 +339,12 @@ function find_quintic_trajectory(pts::Waypoints; num_its=num_its, T_init=1.0)
                 # println("Max joint: $(maximum(poses[:,i])), min joint: $(minimum(poses[:,i]))")
             end
         end
-        if feasible_ct < num_trajectory_dofs
+        if feasible_ct < traj_gen_joints.num_trajectory_dofs
             T = T + 0.2
         end
     end
 
-    if feasible_ct == num_trajectory_dofs
+    if feasible_ct == traj_gen_joints.num_trajectory_dofs
         return quinticTrajParams(a, pts, T), poses, vels
         # println("Trajectory parameters set")
     else
@@ -345,54 +355,54 @@ function find_quintic_trajectory(pts::Waypoints; num_its=num_its, T_init=1.0)
 end
 
 """
-    define_random_trajectory()
+    define_random_trajectory(traj_gen_joints, num_its)
 """
-function define_random_trajectory()
+function define_random_trajectory(traj_gen_joints, num_its)
 
     local traj
-   
+
     while true
-        new_wp = gen_rand_waypoints_at_rest()
+        new_wp = gen_rand_waypoints_at_rest(traj_gen_joints)
         # println(typeof(new_wp))
-        traj = find_quintic_trajectory(new_wp)
+        traj = find_quintic_trajectory(new_wp, num_its)
         # println(traj)
         if typeof(traj[1]) == quinticTrajParams
             # println("found traj")
-            break 
+            break
         end
     end
 
     # println(traj)
     if do_scale_traj == true
-        traj = scale_trajectory(traj..., max_traj_scaling)
+        traj = scale_trajectory(traj_gen_joints, traj..., max_traj_scaling, num_its)
     end
     return traj
 end
 
 """
-    define_multiple_waypoints!(params, swap_times, max_trajs)
+    define_multiple_waypoints!(traj_gen_joints, params, swap_times, max_trajs)
 
 Inputs:
     params: an empty array of type quinticTrajParams[]
-    swap_times: an empty vector of type Float64 
-    max_trajs: the maximum number of waypoints to plan trajectories to 
+    swap_times: an empty vector of type Float64
+    max_trajs: the maximum number of waypoints to plan trajectories to
 
-Gets the parameters to execute some number of quintic trajectories to random 
-zero-velocity waypoints in the joint space. Stores this information in params 
+Gets the parameters to execute some number of quintic trajectories to random
+zero-velocity waypoints in the joint space. Stores this information in params
 and swap_times.
 """
-function define_multiple_waypoints!(params, swap_times, max_trajs)
+function define_multiple_waypoints!(traj_gen_joints, params, swap_times, max_trajs, num_its)
     wp_list = Waypoints[]
     traj_list = Any[]
     scaled_traj_list = Any[]
 
-    wp = gen_rand_waypoints_to_rest()
-    traj = find_quintic_trajectory(wp) 
+    wp = gen_rand_waypoints_to_rest(traj_gen_joints)
+    traj = find_quintic_trajectory(wp, num_its)
 
     # # Keep trying until a good trajectory is found
     while traj === nothing
-        global wp = gen_rand_waypoints_to_rest()
-        global traj = find_quintic_trajectory(wp)
+        global wp = gen_rand_waypoints_to_rest(traj_gen_joints)
+        global traj = find_quintic_trajectory(wp, num_its)
     end
 
     push!(wp_list, wp)
@@ -402,27 +412,27 @@ function define_multiple_waypoints!(params, swap_times, max_trajs)
         for i in 1:rand(1:1:max_trajs-1)
             new_traj = nothing
             new_wp = nothing
-            while new_traj === nothing 
-                new_wp = gen_rand_waypoint_from_start(wp_list[end].goal)
-                new_traj = find_quintic_trajectory(new_wp)
+            while new_traj === nothing
+                new_wp = gen_rand_waypoint_from_start(traj_gen_joints, wp_list[end].goal)
+                new_traj = find_quintic_trajectory(new_wp, num_its)
             end
             push!(wp_list, new_wp)
             push!(traj_list, new_traj)
         end
     end
 
-    # @show 
+    # @show
 
     # # Scale that trajectory to 1x-2x "top speed"
     if do_scale_traj == true
         for traj in traj_list
             # last argument is maximum time scaling factor
-            push!(scaled_traj_list, scale_trajectory(traj..., 2))
+            push!(scaled_traj_list, scale_trajectory(traj..., 2, num_its))
         end
     else
         scaled_traj_list = traj_list
     end
-    
+
     duration = 0
     for traj in scaled_traj_list
         push!(params, traj[1])

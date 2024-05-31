@@ -3,8 +3,8 @@ import RigidBodyDynamics: default_constraint_stabilization_gains, MechanismState
 import RigidBodyDynamics
 import RigidBodyDynamics.cache_eltype
 
-function simulate_with_ext_forces(state0::MechanismState{X}, final_time, pars, ctlr, hydro_calc!, control! = zero_torque!;
-        Δt = 1e-4, stabilization_gains=default_constraint_stabilization_gains(X)) where X 
+function simulate_with_ext_forces(actuator_limits, pitch_pred_pars, sensor_noise_dist, num_dofs, com_frame_dict, cob_frame_dict, const_magic_nums, magic_num_pitch_val, magic_num_bluerov_with_alpha_arm, body_dict, joint_dict, state0::MechanismState{X}, final_time, pars, ctlr, hydro_calc!, mvis, control! = zero_torque!;
+        stabilization_gains=default_constraint_stabilization_gains(X)) where X
     # println("Made it to the simulate function!")
         T = cache_eltype(state0)
     result = DynamicsResult{T}(state0.mechanism)
@@ -15,11 +15,11 @@ function simulate_with_ext_forces(state0::MechanismState{X}, final_time, pars, c
             # println("------ NEW SIM STATE -----")
             # println("Current State:")
             # println(configuration(state))
-            hydro_calc!(hydro_wrenches, t, state)
+            hydro_calc!(com_frame_dict, cob_frame_dict, const_magic_nums, magic_num_pitch_val, magic_num_bluerov_with_alpha_arm, body_dict, joint_dict, hydro_wrenches, t, state, mvis)
             # println("Hydro wrenches")
             # println(hydro_wrenches)
 
-            control!(control_torques, t, state, pars, ctlr, result, hydro_wrenches)
+            control!(actuator_limits, pitch_pred_pars, sensor_noise_dist, num_dofs, const_magic_nums, magic_num_pitch_val, control_torques, t, state, pars, ctlr, result, hydro_wrenches)
             # println("Control torques")
             # println(control_torques)
             # println("--------------- NEW ITERATION -------------------")
@@ -42,8 +42,8 @@ function simulate_with_ext_forces(state0::MechanismState{X}, final_time, pars, c
         end
     end
 tableau = runge_kutta_4(T)
-storage = ExpandingStorage{T}(state0, ceil(Int64, final_time / Δt * 1.001)) # very rough overestimate of number of time steps
+storage = ExpandingStorage{T}(state0, ceil(Int64, final_time / const_magic_nums.Δt * 1.001)) # very rough overestimate of number of time steps
 integrator = MuntheKaasIntegrator(state0, closed_loop_dynamics!, tableau, storage)
-integrate(integrator, final_time, Δt)
+integrate(integrator, final_time, const_magic_nums.Δt)
 storage.ts, storage.qs, storage.vs
 end

@@ -2,10 +2,10 @@ using RigidBodyDynamics, Distributions, Random
 
 include("CtlrParFiles/IrosPitchPredPars.jl")
 # ------------------------------------------------------------------------
-#                              SETUP 
+#                              SETUP
 # ------------------------------------------------------------------------
 mutable struct CtlrCache
-    n_cache 
+    n_cache
     f_cache
     vel_error_cache::Dict{String, Float64}
     vel_int_error_cache::Dict{String, Float64}
@@ -13,8 +13,8 @@ mutable struct CtlrCache
     des_vel::Dict{String, Float64}
     taus
     last_v̇
-    
-    function CtlrCache(state, n_cache, f_cache)
+
+    function CtlrCache(state, n_cache, f_cache, dof_names)
         mechanism = state.mechanism
         num_dofs = num_velocities(mechanism)
         num_actuated_dofs = num_dofs-2
@@ -29,10 +29,10 @@ mutable struct CtlrCache
         end
 
 
-        new(n_cache, f_cache, 
-            vel_error_cache_dict, vel_int_error_cache_dict, 0, 
-            des_vel_dict, Array{Float64}(undef, num_dofs, 1), 
-            zeros(num_dofs)) 
+        new(n_cache, f_cache,
+            vel_error_cache_dict, vel_int_error_cache_dict, 0,
+            des_vel_dict, Array{Float64}(undef, num_dofs, 1),
+            zeros(num_dofs))
     end
 
 end
@@ -71,12 +71,12 @@ end
 # ------------------------------------------------------------------------
 """
 Imposes a PID controller to follow a velocity specified by TrajGen.get_desv_at_t().
-In this case, also imposes damping to each joint. 
+In this case, also imposes damping to each joint.
 Requires the parameters of the trajectory to be followed (pars=trajParams), which consists of the quintic coefficients `a` and the two waypoints to travel between.
 Only happens every 4 steps because integration is done with Runge-Kutta.
 """
 # function pid_control!(torques::AbstractVector, t, state::MechanismState, pars, c)
-function pid_control!(torques::AbstractVector, t, state::MechanismState, pars, c, result, h_wrenches)
+function pid_control!(actuator_limits, pitch_pred_pars, sensor_noise_dist, num_dofs, const_magic_nums, magic_num_pitch_val, torques::AbstractVector, t, state::MechanismState, pars, c, result, h_wrenches)
     # If it's the first time called in the Runge-Kutta, update the control torque
     if rem(c.step_ctr, 4) == 0
 
@@ -86,16 +86,16 @@ function pid_control!(torques::AbstractVector, t, state::MechanismState, pars, c
         # Set torques to appropriate values for equilibrium position
         if c.step_ctr == 0
             torques[7] = -.002      # ff joint E value
-            torques[8] = -.32255    # ff Joint D value 
+            torques[8] = -.32255    # ff Joint D value
             torques[9] = -.01     # ff Joint C value
             torques[10] = 0         #.5e-5
             println("At time... ")
         end
-        
+
         # Roll and pitch are not controlled
         torques[1] = 0.
         torques[2] = 0.
-        
+
         # if rem(c.step_ctr, 1000) == 0
         #     @show c.n_cache.rand_walks
         #     # @show result.jointwrenches
@@ -105,7 +105,7 @@ function pid_control!(torques::AbstractVector, t, state::MechanismState, pars, c
         # #     @show wrist_wrench_wrist_frame
         # end
 
-        if rem(c.step_ctr, ctrl_steps) == 0 # && c.step_ctr != 0
+        if rem(c.step_ctr, const_magic_nums.ctrl_steps) == 0 # && c.step_ctr != 0
 
             manip_des_vels = get_desv_at_t(t, pars)
             # manip_des_vels[4] = [0.0, 0.0, 0.0]
@@ -113,12 +113,12 @@ function pid_control!(torques::AbstractVector, t, state::MechanismState, pars, c
             # TAKE THIS OUT IF YOU WANT THE ARM TO MOVE
             # fill!(manip_des_vels, 0.0)
             # manip_des_vels[1] = .02
-            for (idx, dof_name) in enumerate(dof_names[7:end])
+            for (idx, dof_name) in enumerate(magic_num_pitch_val.dof_names[7:end])
                 c.des_vel[dof_name] = manip_des_vels[idx]
             end
             #
-            noisy_poses, noisy_vels = add_sensor_noise(state, c, result)
-            filtered_vels = filter_velocity(state, c) 
+            noisy_poses, noisy_vels = add_sensor_noise(const_magic_nums, sensor_noise_dist, state, c, result)
+            filtered_vels = filter_velocity(state, c)
 
             set_configuration!(c.f_cache.filtered_state, noisy_poses)
             set_velocity!(c.f_cache.filtered_state, filtered_vels[:])
@@ -126,16 +126,16 @@ function pid_control!(torques::AbstractVector, t, state::MechanismState, pars, c
             ff_torques[1:6] .= zeros(6)
 
             for dir_idx = 7:num_dofs
-                dof = dof_names[dir_idx]
+                dof = magic_num_pitch_val.dof_names[dir_idx]
 
                 meas_vel = filtered_vels[dir_idx]
-                ctlr_tau = joint_controller(torques[dir_idx][1], velocity(state)[dir_idx], dof, c, ff_torques[dir_idx])
+                ctlr_tau = joint_controller(actuator_limits, pitch_pred_pars, const_magic_nums, torques[dir_idx][1], velocity(state)[dir_idx], dof, c, ff_torques[dir_idx])
 
                 c_taus[dir_idx] = ctlr_tau
                 torques[dir_idx] = ctlr_tau
             end
 
-            # unactuate the vehicle 
+            # unactuate the vehicle
             torques[3] = 0.
             torques[4] = 0.
             torques[5] = 0.
@@ -155,52 +155,52 @@ function pid_control!(torques::AbstractVector, t, state::MechanismState, pars, c
 end;
 
 """
-Imposes a PID controller on one joint. 
+Imposes a PID controller on one joint.
 
 `torque` = storage variable, does not modify
-`t` = current time. Not in use. 
-`vel_act` = the actual instantaneous velocity of the joint 
+`t` = current time. Not in use.
+`vel_act` = the actual instantaneous velocity of the joint
 `des_vel` = the desired velocity of the joint, as found by the trajectory generator
 `j_idx` = the index of the joint (of the actuated ones). Here, will be 1 or 2.
 
-Returns a controller torque value, bounded by the torque limits and some dτ/dt value. 
+Returns a controller torque value, bounded by the torque limits and some dτ/dt value.
 """
-function joint_controller(torque, vel_act, dof_name, c, ff)
-    dt = 1/ctrl_freq 
+function joint_controller(actuator_limits, pitch_pred_pars, const_magic_nums, torque, vel_act, dof_name, c, ff)
+    dt = 1/const_magic_nums.ctrl_freq
 
     # Calculate proportional term
     vel_error = vel_act[1] - c.des_vel[dof_name]
-    p_term = -Kp_dict[dof_name]*vel_error
+    p_term = -pitch_pred_pars.Kp_dict[dof_name]*vel_error
 
-    # Calculate derivative term 
+    # Calculate derivative term
     d_vel_error = (vel_error - c.vel_error_cache[dof_name])/dt
-    d_term = - Kd_dict[dof_name]*d_vel_error
+    d_term = - pitch_pred_pars.Kd_dict[dof_name]*d_vel_error
     c.vel_error_cache[dof_name]=vel_error
 
     # Calculate integral term
     c.vel_int_error_cache[dof_name] += vel_error*dt
-    i_term = - Ki_dict[dof_name]*c.vel_int_error_cache[dof_name]
+    i_term = - pitch_pred_pars.Ki_dict[dof_name]*c.vel_int_error_cache[dof_name]
 
     d_tau = p_term + d_term + i_term
     # if rem(c.step_ctr, 500) == 0
     #     if dof_name == "wrist"
-    #         @show vel_act 
+    #         @show vel_act
     #         @show c.des_vel[dof_name]
-    #         @show p_term 
-    #         @show d_term 
+    #         @show p_term
+    #         @show d_term
     #         @show i_term
     #         println("Feedback tau: $(d_tau)")
     #     end
     # end
 
-    # Can only change torque a small amount per time step 
+    # Can only change torque a small amount per time step
     tau_diff_prev_to_inv_dyn = .25ff - .25torque
-    d_tau_w_ff = limit_d_tau(tau_diff_prev_to_inv_dyn+d_tau, dtau_lim_dict[dof_name])
-    
+    d_tau_w_ff = limit_d_tau(tau_diff_prev_to_inv_dyn+d_tau, actuator_limits.dtau_lim_dict[dof_name])
+
     # impose maximum torque limits
     new_tau = torque .+ d_tau_w_ff
-    new_tau = impose_torque_limit(new_tau, torque_lim_dict[dof_name])
- 
+    new_tau = impose_torque_limit(new_tau, actuator_limits.torque_lim_dict[dof_name])
+
     return new_tau
 end
 

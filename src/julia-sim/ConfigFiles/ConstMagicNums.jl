@@ -1,28 +1,53 @@
-# ----------------------------------------------------------
-# World information
-# ----------------------------------------------------------
-rho = 997 # kg/m^3 (density of the water)
+struct ConstMagicNums
+    # World info
+    rho::Float64
+    # Sim info
+    Δt::Float64
+    ctrl_freq::Int
+    ctrl_steps::Int
+    plot_freq::Int
+    plot_factor::Int
+    sample_rate::Int
+    ctrl_loop_num_steps::Int
+    # Truly magic numbers
+    num_its::Int
+    max_traj_duration::Float64
+end
 
-# ----------------------------------------------------------
-# Simulation information
-# ----------------------------------------------------------
-Δt = 1.e-3          # simulation time step
-ctrl_freq = Int(100)     # frequency of call to controller
-ctrl_steps = 4*(1/Δt)/ctrl_freq # number of steps to take before changing controller action
-plot_freq = Int(50)      # frequency of the output CSV and plots
-plot_factor = ctrl_freq/plot_freq
-sample_rate = Int(floor((1/Δt)/plot_freq))
-ctrl_loop_num_steps = 4*(1/Δt)/ctrl_freq
+function create_const_magic_nums()
+    # ----------------------------------------------------------
+    # World information
+    # ----------------------------------------------------------
+    rho = 997 # kg/m^3 (density of the water)
 
-@assert rem(ctrl_loop_num_steps, 1) == 0.0 "Please pick a control frequency that is an even divisor of the simulation frequency."
-@assert rem(plot_factor, 1) == 0.0 "Please pick a plot frequency that is an even divisor of the control frequency."
+    # ----------------------------------------------------------
+    # Simulation information
+    # ----------------------------------------------------------
+    Δt = 1.e-3          # simulation time step
+    ctrl_freq = Int(100)     # frequency of call to controller
+    ctrl_steps = 4*(1/Δt)/ctrl_freq # number of steps to take before changing controller action
+    plot_freq = Int(50)      # frequency of the output CSV and plots
+    plot_factor = ctrl_freq/plot_freq
+    sample_rate = Int(floor((1/Δt)/plot_freq))
+    ctrl_loop_num_steps = 4*(1/Δt)/ctrl_freq
 
-# ----------------------------------------------------------
-# Truly magic numbers
-# ----------------------------------------------------------
-num_its = 50        # number of points to check that the desired joint position and velocity limits don't go out of range
-max_traj_duration = 20. # maximum number of seconds for a quintic trajectory to take
+    @assert rem(ctrl_loop_num_steps, 1) == 0.0 "Please pick a control frequency that is an even divisor of the simulation frequency."
+    @assert rem(plot_factor, 1) == 0.0 "Please pick a plot frequency that is an even divisor of the control frequency."
 
+    # ----------------------------------------------------------
+    # Truly magic numbers
+    # ----------------------------------------------------------
+    num_its = 50        # number of points to check that the desired joint position and velocity limits don't go out of range
+    max_traj_duration = 20. # maximum number of seconds for a quintic trajectory to take
+    ConstMagicNums(
+        # World information
+        rho,
+        # Simulation information
+        Δt, ctrl_freq, ctrl_steps, plot_freq, plot_factor, sample_rate, ctrl_loop_num_steps,
+        # Truly magic numbers
+        num_its, max_traj_duration
+    )
+end
 # ----------------------------------------------------------
 # System-specific functions and information
 # ----------------------------------------------------------
@@ -55,13 +80,26 @@ end
 #     end
 # end
 
+struct SensorNoiseDist
+    v_ang_vel::Distributions.Normal{Float64}
+    arm_pos::Distributions.Normal{Float64}
+    accel::Distributions.Normal{Float64}
+    gyro_rand_walk::Distributions.Normal{Float64}
+    accel_rand_walk::Distributions.Normal{Float64}
+end
 
-# Sensor noise distributions
-# Encoder --> joint position noise -integration-> joint velocity noise
-# Gyroscope --> vehicle body vel noise
-v_ang_vel_noise_dist = Distributions.Normal(0, 0) # .0013) # 75 mdps (LSM6DSOX)
-arm_pos_noise_dist = Distributions.Normal(0, 0) # .0017/6) # .1 degrees, from Reach website
-accel_noise_dist = Distributions.Normal(0, 0) # 0.017658/10) # 1.8 mg = .0176 m/s2 (LSM6DSOX)
+function create_sensor_noise_dist()::SensorNoiseDist
+    # Sensor noise distributions
+    # Encoder --> joint position noise -integration-> joint velocity noise
+    # Gyroscope --> vehicle body vel noise
+    v_ang_vel_noise_dist = Distributions.Normal(0, 0) # .0013) # 75 mdps (LSM6DSOX)
+    arm_pos_noise_dist = Distributions.Normal(0, 0) # .0017/6) # .1 degrees, from Reach website
+    accel_noise_dist = Distributions.Normal(0, 0) # 0.017658/10) # 1.8 mg = .0176 m/s2 (LSM6DSOX)
 
-gyro_rand_walk_dist = Distributions.Normal(0, 0) # .000001)
-accel_rand_walk_dist = Distributions.Normal(0, 0)#0.00001)
+    gyro_rand_walk_dist = Distributions.Normal(0, 0) # .000001)
+    accel_rand_walk_dist = Distributions.Normal(0, 0)#0.00001)
+    SensorNoiseDist(
+        v_ang_vel_noise_dist, arm_pos_noise_dist, accel_noise_dist,
+        gyro_rand_walk_dist, accel_rand_walk_dist
+    )
+end

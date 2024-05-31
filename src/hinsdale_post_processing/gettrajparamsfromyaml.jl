@@ -2,9 +2,9 @@ using CSV, YAML
 using MeshCat, MeshCatMechanisms, MechanismGeometries
 using RigidBodyDynamics
 
-function gettrajparamsfromyaml(trial_code, dataset="fullrange2")
+function gettrajparamsfromyaml(traj_gen_joints, dof_names, trial_code, dataset="fullrange2")
 
-    # Load desired traj data 
+    # Load desired traj data
     if dataset == "fullrange2"
         path_to_data = joinpath("data", "combo_traj_yaml_files_"*dataset, "traj"*trial_code[1:3], "traj"*trial_code*".yaml")
     else
@@ -18,18 +18,18 @@ function gettrajparamsfromyaml(trial_code, dataset="fullrange2")
     duration = des_data["duration"]
 
     num_its = 200
-    poses = Array{Float64}(undef, num_its, num_trajectory_dofs)
-    vels = Array{Float64}(undef, num_its, num_trajectory_dofs)
-    a = Array{Float64}(undef, num_trajectory_dofs, 6)
+    poses = Array{Float64}(undef, num_its, traj_gen_joints.num_trajectory_dofs)
+    vels = Array{Float64}(undef, num_its, traj_gen_joints.num_trajectory_dofs)
+    a = Array{Float64}(undef, traj_gen_joints.num_trajectory_dofs, 6)
     time_secs = Array{Float64}(undef, num_its)
 
     # reconstruct trajectory
-    for i in 1:num_trajectory_dofs
+    for i in 1:traj_gen_joints.num_trajectory_dofs
         dof_name = dof_names[i+6]
         a[i,:] = get_coeffs(pts, duration, i)
         if i <= 5
             (poses[:,i], vels[:,i]) = get_path!(poses[:,i], vels[:,i], pts.start.θs[i], pts.goal.θs[i], duration, a[i,:], num_its)
-        else 
+        else
             fill!(poses[:,i], 0.0)
             fill!(vels[:,i], 0.0)
         end
@@ -49,7 +49,6 @@ function gettrajparamsfromyaml(trial_code, dataset="fullrange2")
     this_traj_params = quinticTrajParams(a, pts, duration)
     return (this_traj_params, des_df, offset)
 end
-
 
 function get_vehicle_response_from_csv(trial_code, foldername="hinsdale-data-2023", is_baseline=false)
     if is_baseline == false
