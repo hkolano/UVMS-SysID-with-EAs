@@ -514,8 +514,11 @@ def evalConfigSingleObj(individual, trajectory_names):
     mse_roll, mse_pitch, mse_joint_e, mse_joint_d, mse_joint_c, mse_joint_b = evalConfig(individual, trajectory_names)
     return np.sum([mse_roll, mse_pitch, mse_joint_e, mse_joint_d, mse_joint_c, mse_joint_b]),
 
-def saveGeneration(config, population, gen_num):
-    gen_save_dir = os.path.join( os.path.expanduser(config) , "gen_"+str(gen_num)+".csv" )
+def createGenFile(config, gen_num):
+    save_dir = os.path.expanduser(config["save_options"]["save_dir"])
+    gen_save_dir = os.path.join(  save_dir , "gen_"+str(gen_num)+".csv" )
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
     header = ["individual_index"] + \
         ["cob_vec_dict:vehicle:0", "cob_vec_dict:vehicle:1", "cob_vec_dict:vehicle:2"] + \
         ["cob_vec_dict:foamL:0", "cob_vec_dict:foamL:1", "cob_vec_dict:foamL:2"] + \
@@ -557,10 +560,14 @@ def saveGeneration(config, population, gen_num):
         ["fitness"]
     with open(gen_save_dir, 'w', newline='') as file:
         w = csv.writer(file, delimiter=',', quotechar='"')
-        w.writerow(row=header)
-        for count, individual in enumerate(population):
-            row = [str(count)] + list(individual) + [individual.fitness.values[0]]
-            w.writerow(row=row)
+        w.writerow(header)
+
+def saveIndividual(config, individual, gen_num, ind_num):
+    gen_save_dir = os.path.join( os.path.expanduser(config["save_options"]["save_dir"]) , "gen_"+str(gen_num)+".csv" )
+    row = [str(ind_num)] + list(individual) + [individual.fitness.values[0]]
+    with open(gen_save_dir, 'a', newline='') as file:
+        w = csv.writer(file, delimiter=',', quotechar='"')
+        w.writerow(row)
 
 def main(config):
     # This needs to be called before running evalConfig(). This is the one time setup of all the necessary libraries
@@ -599,18 +606,21 @@ def main(config):
     # Evaluate the starting population first at generation 0
     fits = toolbox.map(toolbox.evaluate, population)
 
-    # Assign fitnesses
-    for fit, ind in zip(fits, population):
-        ind.fitness.values = fit
+    # Create file for saving generation data
+    createGenFile(config, gen_num=0)
 
-    # This is generation 0. Let's save it
-    saveGeneration(config, population, gen_num=0)
+    # Assign fitnesses
+    for count, (fit, ind) in enumerate(zip(fits, population)):
+        ind.fitness.values = fit
+        saveIndividual(config, ind, gen_num=0, ind_num=count)
 
     # Number of generations after generation 0 (which is initial population)
     NGEN=5000
     for gen_count in range(NGEN):
         # This is the typical generations loop
         # Run this for a set number of generations
+
+        createGenFile(config, gen_num=gen_count+1)
 
         offspring = algorithms.varAnd(population, toolbox, cxpb=0.5, mutpb=0.1)
         # not sure what varAnd does. Also not sure what the algorithms library is. Looks like it's something within DEAP
@@ -623,12 +633,10 @@ def main(config):
         # operation performed on the population and offspring being the output of that
         # ah, fits = fitnesses
 
-        for fit, ind in zip(fits, offspring):
+        for count, (fit, ind) in enumerate(zip(fits, offspring)):
             ind.fitness.values = fit
+            saveIndividual(config, ind, gen_num=gen_count+1, ind_num=count)
 
         population = toolbox.select(offspring, k=len(population))
         # Then we select the offspring, presumably based on fitness, and we select
         # the amount equal to the amount we need in the population
-
-        saveGeneration(config, population, gen_num=gen_count+1)
-

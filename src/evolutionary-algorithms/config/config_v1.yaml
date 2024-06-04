@@ -1,7 +1,7 @@
 # This file is an example of a config for running the evolutionary algorithm (EA)
 # You would put this file in a folder where you want the EA to save the results to
 save_options:
-  save_dir: ~/hpc-share/uvms/preliminary/trial_0
+  save_dir: ~/hpc-share/uvms/preliminary/trial_1
 ea_parameters:
   number_of_generations: 5000
   mutation_probability: 0.1
@@ -9,18 +9,18 @@ ea_parameters:
   population_size: 50
   trajectory_names:
     - _alt_001-0
-    - _alt_001-1
-    - _alt_001-2
-    - _alt_002-0
-    - _alt_002-1
-    - _alt_008-0
-    - _alt_008-1
-    - _alt_008-2
-    - _alt_009-0
-    - _alt_009-1
-    - _alt_011-0
-    - _alt_011-1
-    - _alt_011-2
+    # - _alt_001-1
+    # - _alt_001-2
+    # - _alt_002-0
+    # - _alt_002-1
+    # - _alt_008-0
+    # - _alt_008-1
+    # - _alt_008-2
+    # - _alt_009-0
+    # - _alt_009-1
+    # - _alt_011-0
+    # - _alt_011-1
+    # - _alt_011-2
   start_with_default_params: True
 default_dynamic_params:
   cob_vec_dict:
