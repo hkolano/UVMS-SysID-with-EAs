@@ -547,7 +547,9 @@ def createGenFile(config, gen_num):
         ["grav_mag_dict:vehicle", "grav_mag_dict:weightCA", "grav_mag_dict:weightBL", "grav_mag_dict:weightBR"] + \
         ["grav_mag_dict:dvl", "grav_mag_dict:dvlbracket", "grav_mag_dict:armbase", "grav_mag_dict:shoulder"] + \
         ["grav_mag_dict:upperarm", "grav_mag_dict:elbow", "grav_mag_dict:jaw", "grav_mag_dict:wrist"] + \
-        ["drag:d_lin_angular", "drag:d_nonlin_angular", "drag:d_lin_coeffs", "drag:d_nonlin_coeffs"] + \
+        ["drag:d_lin_angular", "drag:d_nonlin_angular"] + \
+        ["drag:d_lin_coeffs:0", "drag:d_lin_coeffs:1", "drag:d_lin_coeffs:2"] + \
+        ["drag:d_nonlin_coeffs:0", "drag:d_nonlin_coeffs:1", "drag:d_nonlin_coeffs:2"] + \
         ["link_volumes:shoulder", "link_volumes:upperarm", "link_volumes:elbow", "link_volumes:wrist"] + \
         ["link_volumes:armbase", "link_volumes:jaw"] + \
         ["link_masses:shoulder", "link_masses:upperarm", "link_masses:elbow", "link_masses:wrist"] + \

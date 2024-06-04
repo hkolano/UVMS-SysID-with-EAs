@@ -1,7 +1,7 @@
 # This file is an example of a config for running the evolutionary algorithm (EA)
 # You would put this file in a folder where you want the EA to save the results to
 save_options:
-  save_dir: ~/hpc-share/uvms/preliminary/trial_1
+  save_dir: ~/hpc-share/uvms/preliminary/trial_0
 ea_parameters:
   number_of_generations: 5000
   mutation_probability: 0.1
