@@ -78,12 +78,13 @@ all_traj_codes = #["003-0", "003-1",
 # "025-0", "025-1",
 # "026-0", "026-1", "026-2",
 # "030-0", "030-1",
-["_alt_001-0", "_alt_001-1", "_alt_001-2",
-"_alt_002-0", "_alt_002-1",
-"_alt_008-0",
-"_alt_008-1", "_alt_008-2",
-"_alt_009-0", "_alt_009-1",
-"_alt_011-0", "_alt_011-1", "_alt_011-2"]
+["_alt_001-0"]
+# ["_alt_001-0", "_alt_001-1", "_alt_001-2",
+# "_alt_002-0", "_alt_002-1",
+# "_alt_008-0",
+# "_alt_008-1", "_alt_008-2",
+# "_alt_009-0", "_alt_009-1",
+# "_alt_011-0", "_alt_011-1", "_alt_011-2"]
 num_trajectories = length(all_traj_codes)
 
 #%%
@@ -181,16 +182,24 @@ sensor_noise_dist = create_sensor_noise_dist()
 
 #%%
 
+struct SimResult
+    ts::Vector{Float64}
+    qs::Vector{SegmentedVector{JointID, Float64, Base.OneTo{JointID}, Vector{Float64}}}
+    vs::Vector{SegmentedVector{JointID, Float64, Base.OneTo{JointID}, Vector{Float64}}}
+end
 
+#%%
+save_to_csv = false
+show_plots = false
+show_animation = false
+#%%
+
+sim_results = Vector{SimResult}()
 for (i, (traj_info, trial_code)) in enumerate(zip(traj_infos, all_traj_codes))
     # ----------------------------------------------------------
     #                         Simulate
     # ----------------------------------------------------------
     println("Simulating trial $(trial_code)")
-
-    save_to_csv = false
-    show_plots = false
-    show_animation = false
 
     # Give the vehicle initial conditions from the mocap
     zero!(state)
@@ -233,13 +242,17 @@ for (i, (traj_info, trial_code)) in enumerate(zip(traj_infos, all_traj_codes))
         mvis,
         pid_control!
     )
+    # Store this all for later
+    sim_results = push!(sim_results, SimResult(
+        ts, qs, vs
+    ))
 
 end
 #%%
+for (i, (sim_result, traj_info, trial_code)) in enumerate(zip(sim_results, traj_infos, all_traj_codes))
     # ----------------------------------------------------------
     #                      Prepare Plots
     # ----------------------------------------------------------
-    include("UVMSPlotting.jl")
     gr(size=(800, 800))
     @show traj_info.sim_offset
 
@@ -247,11 +260,11 @@ end
     actual_palette = palette([:goldenrod1, :springgreen3], 4)
 
     # Downsample the time steps to goal_freq
-    ts_down = [ts[i] for i in 1:sample_rate:length(ts)]
+    ts_down = [ts[i] for i in 1:const_magic_nums.sample_rate:length(ts)]
     ts_down_no_zero = ts_down[2:end]
 
     # # Set up data collection dicts
-    paths = prep_actual_vels_and_qs_for_plotting(ts_down_no_zero)
+    paths = prep_actual_vels_and_qs_for_plotting(ts_down_no_zero, const_magic_nums)
     sim_df = DataFrame(paths)
     sim_df[!,"time_secs"] = ts_down_no_zero
     # meas_paths = prep_measured_vels_and_qs_for_plotting()
