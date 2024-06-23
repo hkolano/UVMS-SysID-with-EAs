@@ -96,6 +96,13 @@ function setup_frames(body_dict, body_name_list, cob_vec_dict, com_vec_dict, veh
     return cob_frame_dict, com_frame_dict
 end
 
+mutable struct UvmsMechanism
+    mechanism::Mechanism
+    joints::Dict{String, RigidBodyDynamics.Joint}
+    bodies::Dict{String, RigidBodyDynamics.RigidBody}
+    visualizer::Union{MechanismVisualizer, UndefInitializer}
+end
+
 function mechanism_reference_setup(urdf_file, body_names, dof_names, start_visualizer)
     if start_visualizer
         vis = Visualizer()
@@ -108,6 +115,8 @@ function mechanism_reference_setup(urdf_file, body_names, dof_names, start_visua
     # Create visuals of the URDFs
     if start_visualizer
         mvis = MechanismVisualizer(mech_blue_alpha, URDFVisuals(urdf_file), vis[:alpha])
+    else
+        mvis = undef
     end
 
     # Name the joints and bodies of the mechanism
@@ -122,10 +131,12 @@ function mechanism_reference_setup(urdf_file, body_names, dof_names, start_visua
             joint_dict[dof_name] = joints(mech_blue_alpha)[idx-5]
         end
     end
-    if !start_visualizer
-        mvis = undef
-    end
-    return mech_blue_alpha, joint_dict, body_dict, mvis
+    return UvmsMechanism(
+        mech_blue_alpha,
+        joint_dict,
+        body_dict,
+        mvis
+    )
 end
 
 function setup_buoyancy_and_gravity(mech_blue_alpha, buoyancy_force_dict, gravity_force_dict, buoyancy_mag_dict, grav_mag_dict)

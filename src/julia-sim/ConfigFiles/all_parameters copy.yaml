@@ -1,0 +1,55 @@
+# Settings will arbitrarily change how we simulate and visualize data
+settings:
+  trajectories:
+    do_scale: Bool
+    max_scaling: Float64
+    duration_after: Float64
+    max_duration: Float64
+  num_iterations: Int
+  plotting:
+    frequency: Int
+    factor: Int
+    sample_rate: Int
+# Parameters are inherent to the real world
+parameters:
+  world:
+    rho: Float64
+    Δt: Float64
+  model:
+    is_jaw_fixed: Bool
+    body_names: Vector{String}
+    degrees_of_freedom_names: Vector{String}
+    actuator_limits:
+      joints: Dict{String, SVector{2, Float64}}
+      velocities: Dict{String, SVector{2, Float64}}
+      torques: Dict{String, Float64}
+      d_taus: Dict{String, Float64}
+    buoyancy:
+      centers_of_buoyancy: Dict{string, SVector{3, Float64}}
+      magnitudes: Dict{String, Float64}
+    mass:
+      centers: Dict{String, SVector{3, Float64}}
+    gravity:
+      magnitudes: Dict{String, Float64}
+      forces: Dict{String, FreeVector3D}
+    vehicle_extras: Vector{String}
+    drag:
+      links: Dict{String, SVector{3, Float64}}
+      linear_coefficients: Vector{Float64}
+      nonlinear_coefficients: Vector{Float64}
+    noise:
+      v_angular_velocity:
+      arm_position:
+      acceleration:
+      gyroscope_random_walk:
+      acceleration_random_walk:
+  controller:
+    add_noise: Bool
+    Kp: Dict{String, Float64}
+    Ki: Dict{String, Float64}
+    Kd: Dict{String, Float64}
+    do_feedforward: Bool
+    feedforward_propogation: Float64
+    filtering_kernel: Int
+    frequency: Int
+    num_steps: Int

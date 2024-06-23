@@ -27,64 +27,39 @@ include("Noiser.jl")
 include("TrajGenJoints.jl")
 include("UVMSsetup.jl")
 
-include("ConfigFiles/MagicNumPitchVal.jl")
-include("ConfigFiles/ConstMagicNums.jl")
-include("ConfigFiles/MagicNumAlpha.jl")
+include("Setup/SetupParameters.jl")
+include("Setup/SetupSettings.jl")
 
-# Set up directories for trajectories and urdf
 trajparsingfile = joinpath("..", "hinsdale_post_processing", "gettrajparamsfromyaml.jl")
 interpolationfile = joinpath("..", "hinsdale_post_processing", "mocap_interpolation.jl")
 simhelperfuncsfile = joinpath("..", "hinsdale_post_processing", "simcomparisonfuncs.jl")
 include(trajparsingfile)
 include(interpolationfile)
 include(simhelperfuncsfile)
-urdf_file = joinpath("urdf", "blue_rov_hardware_fixedjaw.urdf")
 
 # ----------------------------------------------------------
-#                 One-Time Mechanism Setup
+#      Load in our simulation settings and parameters
 # ----------------------------------------------------------
-# Load in different parameters
-magic_num_pitch_val = create_magic_num_pitch_val()
-const_magic_nums = create_const_magic_nums()
-magic_num_bluerov_with_alpha_arm = create_magic_num_bluerov_with_alpha_arm(const_magic_nums.rho)
-pitch_pred_pars = create_iros_pitch_pred_pars()
-actuator_limits = create_iros_actuator_limits()
+# Load in parameters and settings
+parameters = setup_parameters()
+settings = setup_settings(parameters.controller.frequency, parameters.world.Δt)
 
 # These should not change regardless of dynamic parameters
-start_visualizer = false
-mech_blue_alpha, joint_dict, body_dict, mvis = mechanism_reference_setup(
-    urdf_file, magic_num_pitch_val.body_names, magic_num_pitch_val.dof_names, start_visualizer
+urdf_file = joinpath("urdf", "blue_rov_hardware_fixedjaw.urdf")
+uvms_mechanism = mechanism_reference_setup(
+    urdf_file,
+    parameters.model.body_names,
+    parameters.model.degrees_of_freedom_names,
+    settings.start_visualizer
 )
 traj_gen_joints = create_traj_gen_joints(mech_blue_alpha)
 
 # These should also not change regardless of dynamic parameters
-state = MechanismState(mech_blue_alpha)
-num_dofs = num_velocities(mech_blue_alpha)
+state = MechanismState(uvms_mechanism.mechanism)
+num_dofs = num_velocities(uvms_mechanism.mechanism)
 num_actuated_dofs = num_dofs-2
 
-all_traj_codes = #["003-0", "003-1",
-# "004-0", "004-1",
-# "005-0", "005-1", "005-2", "005-3",
-# "006-0", "006-1", "006-2", "006-3", "006-4",
-# "007-0", "007-1",
-# "009-0", "009-1",
-# "012-0", "012-1", "012-2", "012-3",
-# "014-0", "014-1", "014-2",
-# "015-0", "015-1",
-# "016-0", "016-1",
-# "019-0", "019-1", "019-2", "019-3",
-# "020-0", "020-1",
-# "024-0", "024-1", "024-2",
-# "025-0", "025-1",
-# "026-0", "026-1", "026-2",
-# "030-0", "030-1",
-["_alt_001-0"]
-# ["_alt_001-0", "_alt_001-1", "_alt_001-2",
-# "_alt_002-0", "_alt_002-1",
-# "_alt_008-0",
-# "_alt_008-1", "_alt_008-2",
-# "_alt_009-0", "_alt_009-1",
-# "_alt_011-0", "_alt_011-1", "_alt_011-2"]
+all_traj_codes = ["_alt_001-0"]
 num_trajectories = length(all_traj_codes)
 
 #%%
@@ -114,7 +89,7 @@ traj_infos = Vector{TrajInfo}()
 for (i, trial_code) in enumerate(all_traj_codes)
     println("Loading in data for this trial code: $(trial_code)")
 
-    # Get quintic parameters, desired trajectory?, simulation offset
+    # Get quintic parameters, desired trajectory?, simulation offsetvpn.oregonstate.edu
     params, des_df, sim_offset = gettrajparamsfromyaml(traj_gen_joints, magic_num_pitch_val.dof_names, trial_code, "otherhome")
 
     # Collect mocap, imu, and joint data
@@ -139,8 +114,10 @@ end
 config_dir = joinpath("src", "julia-sim", "ConfigFiles", "DynamicParameters.yaml")
 dynamic_parameters = YAML.load_file(config_dir)
 
-magic_num_bluerov_with_alpha_arm.blue_rov.cob_vec_dict = Dict{String, SVector{3,Float64}}(dynamic_parameters["cob_vec_dict"])
-magic_num_bluerov_with_alpha_arm.blue_rov.buoyancy_mag_dict = Dict{String, Float64}(dynamic_parameters["buoyancy_mag_dict"])
+parameters.model.buoyancy.centers_of_buoyancy = Dict{String, SVector{3,Float64}}(dynamic_parameters["cob_vec_dict"])
+parameters.model.buoyancy.magnitudes = Dict{String, Float64}(dynamic_parameters["buoyancy_mag_dict"])
+
+
 link_volumes = dynamic_parameters["link_volumes"]
 for (k,v) in dynamic_parameters["link_volumes"]
     magic_num_bluerov_with_alpha_arm.blue_rov.buoyancy_mag_dict[k] = v*const_magic_nums.rho*9.81*0.001
@@ -248,6 +225,7 @@ for (i, (traj_info, trial_code)) in enumerate(zip(traj_infos, all_traj_codes))
     ))
 
 end
+
 #%%
 for (i, (sim_result, traj_info, trial_code)) in enumerate(zip(sim_results, traj_infos, all_traj_codes))
     # ----------------------------------------------------------

@@ -1,0 +1,50 @@
+magic_num_pitch_val:
+  # Mechanism information
+  is_jaw_fixed: Bool
+  body_names: Vector{String}
+  dof_names: Vector{String}
+  actuator_limits:
+    torque_lim_dict: Dict{String, Float64}
+    dtau_lim_dict: Dict{String, Float64}
+  # Simulation information
+  do_scale_traj: Bool
+  max_traj_scaling: Float64
+  duration_after_traj: Float64
+  # Controller information
+  add_noise: Bool
+  pitch_pred_pars:
+    # Controller parameters used for pitch prediction
+    Kp_dict: Dict{String, Float64}
+    Ki_dict: Dict{String, Float64}
+    Kd_dict: Dict{String, Float64}
+    do_feedforward: Bool
+    ff_prop: Float64
+    filtering_kernel: Int
+const_magic_nums:
+  # World info
+  rho: Float64
+  # Sim info
+  Δt: Float64
+  ctrl_freq: Int
+  ctrl_steps: int
+  plot_freq: Int
+  plot_factor: Int
+  sample_rate: Int
+  ctrl_loop_num_steps: Int
+  # Truly magic numbers
+  num_its: Int
+  max_traj_duration: Float64
+magic_num_bluerov_with_alpha_arm:
+  blue_rov:
+    cob_vec_dict: Dict{string, SVector{3, Float64}}
+    buoyancy_mag_dict: Dict{String, Float64}
+    buoyancy_force_dict: Dict{String, FreeVector3D}
+    com_vec_dict: Dict{String, SVector{3, Float64}}
+    grav_mag_dict: Dict{String, Float64}
+    gravity_force_dict: Dict{String, FreeVector3D}
+    vehicle_extras_list: Vector{String}
+    d_lin_coeffs: Vector{Float64}
+    d_nonlin_coeffs: Vector{Float64}
+  link_drags: Dict{String, SVector{3, Float64}}
+  joint_lim_dict: Dict{String, SVector{2, Float64}}
+  vel_lim_dict: Dict{String, SVector{2, Float64}}
