@@ -591,8 +591,10 @@ def main(config):
     toolbox.register("evaluate", evalConfigSingleObj, trajectory_names=config["ea_parameters"]["trajectory_names"])
 
     # Initialize the population
-    population_size = 50
-    if config["ea_parameters"]["start_with_default_params"]:
+    population_size = config["ea_parameters"]["population_size"]
+
+    # We can start with the default dynamic parameters and go from there
+    if config["ea_parameters"]["start_population"]["option"] == "default_params":
         default_params_dict = config["default_dynamic_params"]
         default_params_individual = individualDictToList(default_params_dict)
         population = toolbox.population(n=1)
@@ -602,23 +604,64 @@ def main(config):
         mutated_default_param_inds = algorithms.varAnd(population*(population_size-1), toolbox, cxpb=0.5, mutpb=0.1)
         # Put both populations together
         population = population + mutated_default_param_inds
-    else:
+
+    elif config["ea_parameters"]["start_population"]["option"] == "load_dir":
+        population = []
+        # Load in the csv and fill out the population one by one
+        load_dir = os.path.expanduser(config["ea_parameters"]["start_population"]["load_dir"])
+        with open(load_dir, 'r') as csvfile:
+            reader = csv.reader(csvfile)
+            for count, row in enumerate(reader):
+                # Don't use the header row
+                if count == 0:
+                    # Continue means move onto the next
+                    # iteration without running the rest of the code below
+                    continue
+                # Grab just the parameters for an indivdual
+                # (Skip fitness and index)
+                params = [float(val) for val in row[1:-1]]
+                # Put that into an individual
+                individual = creator.Individual(params)
+                # Now put the fitness in there
+                individual.fitness.values = (float(row[-1]),)
+                # Throw it into the population
+                population.append(individual)
+
+    elif config["ea_parameters"]["start_population"]["option"] == "random":
         population = toolbox.population(n=population_size)
 
-    # Evaluate the starting population first at generation 0
-    fits = toolbox.map(toolbox.evaluate, population)
 
-    # Create file for saving generation data
-    createGenFile(config, gen_num=0)
+    # If we loaded in a population, we may not need to reevaluate indivdiuals
+    if config["ea_parameters"]["start_population"]["option"] == "load_dir" and \
+        config["ea_parameters"]["start_population"]["reevaluate_loaded_population"] == False:
+        pass
 
-    # Assign fitnesses
-    for count, (fit, ind) in enumerate(zip(fits, population)):
-        ind.fitness.values = fit
-        saveIndividual(config, ind, gen_num=0, ind_num=count)
+    # Otherwise we should evaluate all our individuals
+    else:
+        # Evaluate the starting population first at generation 0
+        fits = toolbox.map(toolbox.evaluate, population)
+
+        # Create file for saving generation data
+        createGenFile(config, gen_num=0)
+
+        # Assign fitnesses
+        for count, (fit, ind) in enumerate(zip(fits, population)):
+            ind.fitness.values = fit
+            saveIndividual(config, ind, gen_num=0, ind_num=count)
 
     # Number of generations after generation 0 (which is initial population)
-    NGEN=5000
-    for gen_count in range(NGEN):
+    NGEN = config["ea_parameters"]["number_of_generations"]
+    # Now modify this number in case we are restarting an experiment with a loaded population
+    if config["ea_parameters"]["start_population"]["option"] == "load_dir":
+        load_dir = config["ea_parameters"]["start_population"]["load_dir"]
+        filename = load_dir.split("/")[-1]
+        gen_name = filename.split(".")[0]
+        gen_start = int(gen_name.split("_")[-1])
+    else:
+        gen_start = 0
+
+    for gen_count in range(NGEN-gen_start):
+        gen_count += gen_start
         # This is the typical generations loop
         # Run this for a set number of generations
 

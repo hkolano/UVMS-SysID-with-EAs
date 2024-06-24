@@ -21,7 +21,10 @@ ea_parameters:
     # - _alt_011-0
     # - _alt_011-1
     # - _alt_011-2
-  start_with_default_params: True
+  start_population:
+    option: load_dir # random, default_params, load_dir
+    load_dir: ~/hpc-share/uvms/preliminary/trial_0/gen_20.csv
+    reevaluate_loaded_population: False
 default_dynamic_params:
   cob_vec_dict:
     vehicle: [0.0074, 0.0, 0.02]
