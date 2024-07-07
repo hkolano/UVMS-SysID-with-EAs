@@ -3,8 +3,6 @@
 #SBATCH --constraint=skylake
 #SBATCH --mem=64G
 #SBATCH -c 4
-#SBATCH -p mime1
-#SBATCH -A kt-lab
 
 module load python/3.10.so
 source ~/venv/uvms-learning/bin/activate
