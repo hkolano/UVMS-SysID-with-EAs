@@ -12,6 +12,8 @@ import os
 import random
 from deap import creator, base, tools, algorithms
 import csv
+from guppy import hpy
+from heap_analysis import get_memory_usage
 
 def individualListToDict(individual_list_format):
     """This takes in an individual as a list of parameters and turns it into a dictionary for evaluation"""
@@ -572,9 +574,13 @@ def saveIndividual(config, individual, gen_num, ind_num):
         w.writerow(row)
 
 def main(config):
+    h = hpy()
+    print("Starting up program. Memory usage: "+str(get_memory_usage(h))+" bytes")
     # This needs to be called before running evalConfig(). This is the one time setup of all the necessary libraries
     # and parameters for running the eval code multiple times
     setupJulia()
+
+    print("Finished setting up Julia. Memory usage: "+str(get_memory_usage(h))+" bytes")
 
     # Set up some helpers for the evolutionary algorithm
     creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
@@ -648,6 +654,7 @@ def main(config):
         for count, (fit, ind) in enumerate(zip(fits, population)):
             ind.fitness.values = fit
             saveIndividual(config, ind, gen_num=0, ind_num=count)
+            print("\nFinished individual "+str(count)+" at generation "+str(0)+". Memory usage: "+str(get_memory_usage(h))+" bytes")
 
     # Number of generations after generation 0 (which is initial population)
     NGEN = config["ea_parameters"]["number_of_generations"]
@@ -659,6 +666,8 @@ def main(config):
         gen_start = int(gen_name.split("_")[-1])
     else:
         gen_start = 0
+
+    print("\nFinished gen_start. Memory usage: "+str(get_memory_usage(h))+" bytes")
 
     for gen_count in range(NGEN-gen_start):
         gen_count += gen_start
@@ -681,7 +690,10 @@ def main(config):
         for count, (fit, ind) in enumerate(zip(fits, offspring)):
             ind.fitness.values = fit
             saveIndividual(config, ind, gen_num=gen_count+1, ind_num=count)
+            print("\nFinished individual "+str(count)+" at generation "+str(gen_count)+". Memory usage: "+str(get_memory_usage(h))+" bytes")
 
         population = toolbox.select(offspring, k=len(population))
         # Then we select the offspring, presumably based on fitness, and we select
         # the amount equal to the amount we need in the population
+
+        print("\nFinished generation "+str(gen_count)+". Memory usage: "+str(get_memory_usage(h))+" bytes")
