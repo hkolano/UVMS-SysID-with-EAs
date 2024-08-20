@@ -52,7 +52,7 @@ uvms_mechanism = mechanism_reference_setup(
     parameters.model.degrees_of_freedom_names,
     settings.start_visualizer
 )
-traj_gen_joints = create_traj_gen_joints(mech_blue_alpha)
+traj_gen_joints = create_traj_gen_joints(uvms_mechanism.mechanism)
 
 # These should also not change regardless of dynamic parameters
 state = MechanismState(uvms_mechanism.mechanism)
@@ -90,7 +90,7 @@ for (i, trial_code) in enumerate(all_traj_codes)
     println("Loading in data for this trial code: $(trial_code)")
 
     # Get quintic parameters, desired trajectory?, simulation offsetvpn.oregonstate.edu
-    params, des_df, sim_offset = gettrajparamsfromyaml(traj_gen_joints, magic_num_pitch_val.dof_names, trial_code, "otherhome")
+    params, des_df, sim_offset = gettrajparamsfromyaml(traj_gen_joints, parameters.model.degrees_of_freedom_names, trial_code, "otherhome")
 
     # Collect mocap, imu, and joint data
     mocap_df = get_vehicle_response_from_csv(trial_code, "hinsdale-data-2023", false)
@@ -116,41 +116,41 @@ dynamic_parameters = YAML.load_file(config_dir)
 
 parameters.model.buoyancy.centers_of_buoyancy = Dict{String, SVector{3,Float64}}(dynamic_parameters["cob_vec_dict"])
 parameters.model.buoyancy.magnitudes = Dict{String, Float64}(dynamic_parameters["buoyancy_mag_dict"])
-
-
 link_volumes = dynamic_parameters["link_volumes"]
 for (k,v) in dynamic_parameters["link_volumes"]
-    magic_num_bluerov_with_alpha_arm.blue_rov.buoyancy_mag_dict[k] = v*const_magic_nums.rho*9.81*0.001
+    parameters.model.buoyancy.magnitudes[k] = v*parameters.world.rho*9.81*0.001
 end
-magic_num_bluerov_with_alpha_arm.blue_rov.com_vec_dict = Dict{String, SVector{3, Float64}}(dynamic_parameters["com_vec_dict"])
-magic_num_bluerov_with_alpha_arm.blue_rov.grav_mag_dict = Dict{String, Float64}(dynamic_parameters["grav_mag_dict"])
+
+parameters.model.gravity.centers_of_mass = Dict{String, SVector{3, Float64}}(dynamic_parameters["com_vec_dict"])
+parameters.model.gravity.magnitudes = Dict{String, Float64}(dynamic_parameters["grav_mag_dict"])
 link_masses = dynamic_parameters["link_masses"]
 for (k,v) in link_masses
-    magic_num_bluerov_with_alpha_arm.blue_rov.grav_mag_dict[k] = v*9.81
+    parameters.model.gravity.magnitudes[k] = v*9.81
 end
+
 d_lin_angular = dynamic_parameters["d_lin_angular"]
-magic_num_bluerov_with_alpha_arm.blue_rov.d_lin_coeffs = Vector{Float64}(dynamic_parameters["d_lin_coeffs"])
-push!(magic_num_bluerov_with_alpha_arm.blue_rov.d_lin_coeffs, d_lin_angular, d_lin_angular, d_lin_angular)
+parameters.model.drag.linear_coefficients = Vector{Float64}(dynamic_parameters["d_lin_coeffs"])
+push!(parameters.model.drag.linear_coefficients, d_lin_angular, d_lin_angular, d_lin_angular)
 
 d_nonlin_angular = dynamic_parameters["d_nonlin_angular"]
-magic_num_bluerov_with_alpha_arm.blue_rov.d_nonlin_coeffs = dynamic_parameters["d_nonlin_coeffs"]
-push!(magic_num_bluerov_with_alpha_arm.blue_rov.d_nonlin_coeffs, d_nonlin_angular, d_nonlin_angular, d_nonlin_angular)
+parameters.model.drag.nonlinear_coefficients = dynamic_parameters["d_nonlin_coeffs"]
+push!(parameters.model.drag.nonlinear_coefficients, d_nonlin_angular, d_nonlin_angular, d_nonlin_angular)
 
 # These will change depending on dynamic parameters
-cob_frame_dict, com_frame_dict = setup_frames(
-    body_dict,
-    magic_num_pitch_val.body_names,
-    magic_num_bluerov_with_alpha_arm.blue_rov.cob_vec_dict,
-    magic_num_bluerov_with_alpha_arm.blue_rov.com_vec_dict,
-    magic_num_bluerov_with_alpha_arm.blue_rov.vehicle_extras_list,
-    mvis
+parameters.model.buoyancy.centers_of_buoyancy, model.gravity.centers_of_mass = setup_frames(
+    uvms_mechanism.bodies,
+    parameters.model.body_names,
+    parameters.model.buoyancy.centers_of_buoyancy,
+    parameters.model.gravity.centers_of_mass,
+    parameters.model.vehicle_extras,
+    uvms_mechanism.visualizer
 )
 setup_buoyancy_and_gravity(
-    mech_blue_alpha,
-    magic_num_bluerov_with_alpha_arm.blue_rov.buoyancy_force_dict,
-    magic_num_bluerov_with_alpha_arm.blue_rov.gravity_force_dict,
-    magic_num_bluerov_with_alpha_arm.blue_rov.buoyancy_mag_dict,
-    magic_num_bluerov_with_alpha_arm.blue_rov.grav_mag_dict
+    uvms_mechanism.mechanism,
+    parameters.model.buoyancy.forces,
+    parameters.model.gravity.forces,
+    parameters.model.buoyancy.magnitudes,
+    parameters.model.gravity.magnitudes
 )
 
 #%%
