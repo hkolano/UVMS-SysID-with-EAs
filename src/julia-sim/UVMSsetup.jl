@@ -94,10 +94,16 @@ function setup_frames(body_dict, body_name_list, cob_vec_dict, com_vec_dict)
     return cob_frame_dict, com_frame_dict
 end
 
-function mechanism_reference_setup(urdf_file)
+function mechanism_reference_setup(urdf_file, default_port = 8700)
+    # vis = Visualizer(
+    #     CoreVisualizer(
+    #         default_port=default_port
+    #     ),
+    #     ["meshcat"]
+    # )
     vis = Visualizer()
     mech_blue_alpha = parse_urdf(urdf_file; floating=true, gravity = [0.0, 0.0, 0.0])
-    delete!(vis)
+    # delete!(vis)
 
     # Create visuals of the URDFs
     mvis = MechanismVisualizer(mech_blue_alpha, URDFVisuals(urdf_file), vis[:alpha])

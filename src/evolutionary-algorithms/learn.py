@@ -3,16 +3,17 @@
 # First just trying to call Julia to see if we can call it from python
 from pathlib import Path
 import os
-from julia.api import Julia
+# from julia.api import Julia #TODO: Each thread gets its own julia runtime
 # Julia(runtime=os.path.expanduser("~")+'/julia-1.8.2/bin/julia-1.8.2',compiled_modules=False)
-Julia(compiled_modules=False)
-from julia import Main
+# Julia(compiled_modules=False)
+# from julia import Main
 import numpy as np
 import os
 import random
 from deap import creator, base, tools, algorithms
 import csv
 import multiprocessing
+import atexit
 
 # Seeding for now for 100% replicatable results
 random.seed(0)
@@ -194,6 +195,9 @@ def setupJulia():
     Main.eval('using Random ')
 
     Main.eval('using DataFrames, Interpolations ')
+
+    # Main.eval('using MeshCat')
+    # Main.eval('vis = Visualizer()')
 
     Main.eval('include("HydroCalc.jl")')
     Main.eval('include("SimWExt.jl")')
@@ -579,10 +583,31 @@ def saveIndividual(config, individual, gen_num, ind_num):
         w = csv.writer(file, delimiter=',', quotechar='"')
         w.writerow(row)
 
+# This initializer will run in each worker process.
+def init_worker():
+    from julia.api import Julia
+    # Initialize Julia (make sure this happens in the worker)
+    Julia(compiled_modules=False)
+    global Main
+    from julia import Main
+    # # Include the Julia file which defines the function.
+    # Main.eval('include("EvalExample.jl")')
+    # # Set the global variable in the worker process.
+    # global evaluate_parameter
+    # evaluate_parameter = Main.evaluate_parameter
+    setupJulia()
+
+    # Unregister PyJulia's shutdown hook.
+    try:
+        from julia import __init__ as julia_init
+        atexit.unregister(julia_init._shutdown)
+    except Exception:
+        pass
+
 def main(config):
     # This needs to be called before running evalConfig(). This is the one time setup of all the necessary libraries
     # and parameters for running the eval code multiple times
-    setupJulia()
+    # setupJulia() #TODO: Each worker should set up julia on its own. No global julia in the main thread.
 
     # Set up some helpers for the evolutionary algorithm
     creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
@@ -597,6 +622,14 @@ def main(config):
     toolbox.register("mutate", tools.mutGaussian, mu=0.0, sigma=0.2, indpb=0.2)
     toolbox.register("select", tools.selTournament, tournsize=3)
     toolbox.register("evaluate", evalConfigSingleObj, trajectory_names=config["ea_parameters"]["trajectory_names"])
+    
+    # Use the spawn start method so that the worker processes do not inherit
+    # the already-initialized Julia runtime.
+    multiprocessing.set_start_method("spawn")
+
+    # Create a pool with the initializer.
+    pool = multiprocessing.Pool(processes=2, initializer=init_worker)
+    toolbox.register("map", pool.map)
 
     # Initialize the population
     population_size = config["ea_parameters"]["population_size"]
@@ -697,3 +730,7 @@ def main(config):
         population = toolbox.select(offspring, k=len(population))
         # Then we select the offspring, presumably based on fitness, and we select
         # the amount equal to the amount we need in the population
+
+    # Properly close and join the pool.
+    pool.close()
+    pool.join()
