@@ -12,6 +12,11 @@ import os
 import random
 from deap import creator, base, tools, algorithms
 import csv
+import multiprocessing
+
+# Seeding for now for 100% replicatable results
+random.seed(0)
+np.random.seed(0)
 
 def individualListToDict(individual_list_format):
     """This takes in an individual as a list of parameters and turns it into a dictionary for evaluation"""
@@ -172,6 +177,9 @@ def setupJulia():
     # ----------------------------------------------------------
     #                     Import Libraries
     # ----------------------------------------------------------
+    Main.eval('using Pkg')
+    usr = os.path.expanduser("~")
+    Main.eval(f'Pkg.activate("{usr}/UVMS-SysID-with-EAs")')
     Main.eval('using RigidBodyDynamics, Rotations ')
     Main.eval('using LinearAlgebra, StaticArrays, DataStructures ')
     # Main.eval('using MeshCat, MeshCatMechanisms, MechanismGeometries ')
@@ -671,7 +679,11 @@ def main(config):
         # not sure what varAnd does. Also not sure what the algorithms library is. Looks like it's something within DEAP
         # offspring... hm.. not sure how that works in this context
 
+        # num_threads = 15
+        # pool = multiprocessing.Pool(processes=num_threads)
+
         fits = toolbox.map(toolbox.evaluate, offspring)
+        # fits = pool.map_async(toolbox.evaluate, offspring)
         # mapping the evaluate function to each of the offspring?
         # What is the difference between the offspring and the population?
         # If it is the offspring after selection, then I would expect to see some selection
