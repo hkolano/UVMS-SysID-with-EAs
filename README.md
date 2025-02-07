@@ -27,7 +27,7 @@ pip install setuptools==75.8.0
 pip install wheel==0.44.0
 python
 >>> import julia
->>> julia.install(julia='/home/gonzaeve/d.juliaup/bin/julia')
+>>> julia.install(julia='/home/gonzaeve/.juliaup/bin/julia')
 ```
 
 
