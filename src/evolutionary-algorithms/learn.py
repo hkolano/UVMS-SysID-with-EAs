@@ -628,7 +628,7 @@ def main(config):
     multiprocessing.set_start_method("spawn")
 
     # Create a pool with the initializer.
-    pool = multiprocessing.Pool(processes=2, initializer=init_worker)
+    pool = multiprocessing.Pool(processes=5, initializer=init_worker)
     toolbox.register("map", pool.map)
 
     # Initialize the population

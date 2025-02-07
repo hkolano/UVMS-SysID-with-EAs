@@ -158,7 +158,7 @@ ea_parameters:
   crossover_probability: 0.5
   mutation_probability: 0.1
   number_of_generations: 5000
-  population_size: 3
+  population_size: 50
   start_population:
     load_dir: ''
     option: random
