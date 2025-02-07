@@ -1,3 +1,6 @@
+using MeshCat
+using Sockets
+
 function setup_frames(body_dict, body_name_list, cob_vec_dict, com_vec_dict)
     cob_frame_dict = Dict{String, CartesianFrame3D}()
     com_frame_dict = Dict{String, CartesianFrame3D}()
@@ -94,14 +97,18 @@ function setup_frames(body_dict, body_name_list, cob_vec_dict, com_vec_dict)
     return cob_frame_dict, com_frame_dict
 end
 
-function mechanism_reference_setup(urdf_file, default_port = 8700)
+function mechanism_reference_setup(urdf_file, default_port)
     # vis = Visualizer(
-    #     CoreVisualizer(
+    #     MeshCat.CoreVisualizer(
     #         default_port=default_port
     #     ),
     #     ["meshcat"]
     # )
-    vis = Visualizer()
+    # vis = Visualizer()
+    vis = Visualizer(
+        MeshCat.CoreVisualizer(ip"127.0.0.1", default_port),
+        ["meshcat"]
+    )
     mech_blue_alpha = parse_urdf(urdf_file; floating=true, gravity = [0.0, 0.0, 0.0])
     # delete!(vis)
 

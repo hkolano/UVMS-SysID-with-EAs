@@ -174,7 +174,13 @@ def individualDictToList(individual_dict_format):
 def calculateMSE(a, b):
     return (np.square(a-b)).mean()
 
-def setupJulia():
+def setupJulia(worker_id: int):
+    import julia
+    from julia.api import Julia
+    # Initialize Julia (make sure this happens in the worker)
+    Julia(compiled_modules=False)
+    global Main
+    from julia import Main
     # ----------------------------------------------------------
     #                     Import Libraries
     # ----------------------------------------------------------
@@ -224,7 +230,15 @@ def setupJulia():
     #                 One-Time Mechanism Setup
     # ----------------------------------------------------------
 
-    Main.eval("""mech_blue_alpha, mvis, joint_dict, body_dict = mechanism_reference_setup(urdf_file)""")
+    Main.default_port = worker_id+8700
+    setup = False
+    while not setup:
+        try:
+            Main.eval("""mech_blue_alpha, mvis, joint_dict, body_dict = mechanism_reference_setup(urdf_file, default_port)""")
+            setup = True
+        except julia.core.JuliaError:
+            pass
+
     Main.eval("""include("TrajGenJoints.jl")""")
     Main.eval("include(simhelperfuncsfile)")
 
@@ -234,10 +248,6 @@ def setupJulia():
     Main.eval("""state = MechanismState(mech_blue_alpha)""")
     Main.eval("""num_dofs = num_velocities(mech_blue_alpha)""")
     Main.eval("""num_actuated_dofs = num_dofs-2""")
-
-    Main.eval('mech_blue_alpha, mvis, joint_dict, body_dict = mechanism_reference_setup(urdf_file)')
-    Main.eval('include("TrajGenJoints.jl")')
-    Main.eval('include(simhelperfuncsfile)')
 
     # Moving the includes for files with simulation tools here
     Main.eval('include("HydroCalc.jl")')
@@ -585,17 +595,12 @@ def saveIndividual(config, individual, gen_num, ind_num):
 
 # This initializer will run in each worker process.
 def init_worker():
-    from julia.api import Julia
-    # Initialize Julia (make sure this happens in the worker)
-    Julia(compiled_modules=False)
-    global Main
-    from julia import Main
     # # Include the Julia file which defines the function.
     # Main.eval('include("EvalExample.jl")')
     # # Set the global variable in the worker process.
     # global evaluate_parameter
     # evaluate_parameter = Main.evaluate_parameter
-    setupJulia()
+    setupJulia(multiprocessing.current_process()._identity[0])
 
     # Unregister PyJulia's shutdown hook.
     try:
@@ -607,7 +612,6 @@ def init_worker():
 def main(config):
     # This needs to be called before running evalConfig(). This is the one time setup of all the necessary libraries
     # and parameters for running the eval code multiple times
-    # setupJulia() #TODO: Each worker should set up julia on its own. No global julia in the main thread.
 
     # Set up some helpers for the evolutionary algorithm
     creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
