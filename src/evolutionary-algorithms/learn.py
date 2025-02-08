@@ -632,7 +632,7 @@ def main(config, load_checkpoint):
     multiprocessing.set_start_method("spawn")
 
     # Create a pool with the initializer.
-    pool = multiprocessing.Pool(processes=16, initializer=init_worker)
+    pool = multiprocessing.Pool(processes=11, initializer=init_worker)
     toolbox.register("map", pool.map)
 
     # Initialize the population
