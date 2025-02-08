@@ -13,9 +13,10 @@ if __name__ == "__main__":
         epilog=""
     )
     parser.add_argument("config_dir")
+    parser.add_argument('--load_checkpoint', action='store_true')
     args = parser.parse_args()
 
     with open(args.config_dir, 'r') as file:
         config = yaml.safe_load(file)
 
-    main(config)
+    main(config, args.load_checkpoint)

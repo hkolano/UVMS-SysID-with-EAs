@@ -609,7 +609,7 @@ def init_worker():
     except Exception:
         pass
 
-def main(config):
+def main(config, load_checkpoint):
     # This needs to be called before running evalConfig(). This is the one time setup of all the necessary libraries
     # and parameters for running the eval code multiple times
 
@@ -632,11 +632,37 @@ def main(config):
     multiprocessing.set_start_method("spawn")
 
     # Create a pool with the initializer.
-    pool = multiprocessing.Pool(processes=5, initializer=init_worker)
+    pool = multiprocessing.Pool(processes=16, initializer=init_worker)
     toolbox.register("map", pool.map)
 
     # Initialize the population
     population_size = config["ea_parameters"]["population_size"]
+
+    # If we have the flag set to load the checkpoint, then that overrides the config
+    if load_checkpoint:
+        # Look at what populations we have saved
+        save_dir = Path(os.path.expanduser(config['save_options']['save_dir']))
+        checkpoints = [c for c in os.listdir(save_dir) if c.split('_')[0]=='gen']
+        checkpoints.sort(key=lambda c: int(c.split('_')[-1].split('.')[0]), reverse=True)
+        print(checkpoints)
+        while len(checkpoints) > 0:
+            # Check if the most recent csv file is complete
+            load_dir = save_dir / checkpoints[0]
+            with open(load_dir, 'r') as csvfile:
+                reader = csv.reader(csvfile)
+                num_rows = sum(1 for _ in reader)
+                if num_rows < 1+population_size:
+                    # Csv is not complete. Try again with the next csv
+                    checkpoints[:] = checkpoints[1:]
+                else:
+                    # Csv is complete. Override config to load this population
+                    config["ea_parameters"]["start_population"]["option"] = "load_dir"
+                    config["ea_parameters"]["start_population"]["load_dir"] = load_dir
+                    config["ea_parameters"]["start_population"]["reevaluate_loaded_population"] = False
+                    # Clear checkpoints so we move on
+                    checkpoints = []
+
+    print("Loading in ", config["ea_parameters"]["start_population"]["load_dir"])
 
     # We can start with the default dynamic parameters and go from there
     if config["ea_parameters"]["start_population"]["option"] == "default_params":
@@ -675,14 +701,17 @@ def main(config):
     elif config["ea_parameters"]["start_population"]["option"] == "random":
         population = toolbox.population(n=population_size)
 
-
+    print(config["ea_parameters"]["start_population"]["option"])
+    print(config["ea_parameters"]["start_population"]["reevaluate_loaded_population"])
     # If we loaded in a population, we may not need to reevaluate indivdiuals
     if config["ea_parameters"]["start_population"]["option"] == "load_dir" and \
         config["ea_parameters"]["start_population"]["reevaluate_loaded_population"] == False:
+        print("NOT RE EVALUATING ALL INDIVIDUALS")
         pass
 
     # Otherwise we should evaluate all our individuals
     else:
+        print("RE EVALUATING ALL INDIVIDUALS")
         # Evaluate the starting population first at generation 0
         fits = toolbox.map(toolbox.evaluate, population)
 
@@ -698,12 +727,13 @@ def main(config):
     NGEN = config["ea_parameters"]["number_of_generations"]
     # Now modify this number in case we are restarting an experiment with a loaded population
     if config["ea_parameters"]["start_population"]["option"] == "load_dir":
-        load_dir = config["ea_parameters"]["start_population"]["load_dir"]
-        filename = load_dir.split("/")[-1]
+        load_dir = Path(config["ea_parameters"]["start_population"]["load_dir"])
+        filename = load_dir.name
         gen_name = filename.split(".")[0]
         gen_start = int(gen_name.split("_")[-1])
     else:
         gen_start = 0
+    print('gen_start: ', gen_start)
 
     for gen_count in range(NGEN-gen_start):
         gen_count += gen_start

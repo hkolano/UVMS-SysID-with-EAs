@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -A kt-lab
 #SBATCH --partition=preempt
-#SBATCH -c 12
+#SBATCH -c 48
 #SBATCH --mem=64G
 #SBATCH --nodes=1
 #SBATCH --time=2-00:00:00
