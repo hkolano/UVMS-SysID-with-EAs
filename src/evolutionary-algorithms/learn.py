@@ -761,7 +761,7 @@ def main(config, load_checkpoint):
             ind.fitness.values = fit
             saveIndividual(config, ind, gen_num=gen_count+1, ind_num=count)
 
-        population = toolbox.select(offspring, k=len(population))
+        population[:] = tools.selBest(population+offspring, 1) + toolbox.select(offspring, k=len(population)-1)
         # Then we select the offspring, presumably based on fitness, and we select
         # the amount equal to the amount we need in the population
 
