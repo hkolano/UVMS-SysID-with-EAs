@@ -627,6 +627,11 @@ def main(config, load_checkpoint):
     toolbox.register("select", tools.selTournament, tournsize=3)
     toolbox.register("evaluate", evalConfigSingleObj, trajectory_names=config["ea_parameters"]["trajectory_names"])
 
+    if 'num_elites' in 'ea_parameters':
+        num_elites = config['ea_parameters']['number_elites']
+    else:
+        num_elites = 0
+
     # Use the spawn start method so that the worker processes do not inherit
     # the already-initialized Julia runtime.
     multiprocessing.set_start_method("spawn")
@@ -761,7 +766,7 @@ def main(config, load_checkpoint):
             ind.fitness.values = fit
             saveIndividual(config, ind, gen_num=gen_count+1, ind_num=count)
 
-        population[:] = tools.selBest(population+offspring, 1) + toolbox.select(offspring, k=len(population)-1)
+        population[:] = tools.selBest(population+offspring, num_elites) + toolbox.select(offspring, k=len(population)-num_elites)
         # Then we select the offspring, presumably based on fitness, and we select
         # the amount equal to the amount we need in the population
 
