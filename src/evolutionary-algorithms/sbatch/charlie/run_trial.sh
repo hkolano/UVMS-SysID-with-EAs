@@ -12,4 +12,4 @@ source ~/hpc-share/miniforge/bin/activate
 conda activate uvms-learning
 
 cd ~/UVMS-SysID-with-EAs/src/julia-sim
-python ../evolutionary-algorithms/run_cli.py ~/UVMS-SysID-with-EAs/src/evolutionary-algorithms/config/charlie/trial_$1.yaml
+python ../evolutionary-algorithms/run_cli.py ~/UVMS-SysID-with-EAs/src/evolutionary-algorithms/config/charlie/trial_$1.yaml --load_checkpoint
