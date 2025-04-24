@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH -A kt-lab
 #SBATCH --partition=preempt
-#SBATCH -c 96
-#SBATCH --mem=380000
+#SBATCH -c 60
+#SBATCH --mem=300G
 #SBATCH --nodes=1
 #SBATCH --time=7-00:00:00
 #SBATCH --requeue
