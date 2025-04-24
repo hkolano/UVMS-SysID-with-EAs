@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH -A kt-lab
 #SBATCH --partition=preempt
-#SBATCH -c 32
-#SBATCH --mem=64G
+#SBATCH -c 96
+#SBATCH --mem=380000
 #SBATCH --nodes=1
-#SBATCH --time=2-00:00:00
+#SBATCH --time=7-00:00:00
 #SBATCH --requeue
 #SBATCH --nodelist=cn-v-[1-8]
 

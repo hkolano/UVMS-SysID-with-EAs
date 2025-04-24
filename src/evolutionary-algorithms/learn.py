@@ -626,13 +626,13 @@ def main(config, load_checkpoint):
     toolbox.register("mutate", tools.mutGaussian, mu=0.0, sigma=0.2, indpb=0.2)
     toolbox.register("select", tools.selTournament, tournsize=3)
     toolbox.register("evaluate", evalConfigSingleObj, trajectory_names=config["ea_parameters"]["trajectory_names"])
-    
+
     # Use the spawn start method so that the worker processes do not inherit
     # the already-initialized Julia runtime.
     multiprocessing.set_start_method("spawn")
 
     # Create a pool with the initializer.
-    pool = multiprocessing.Pool(processes=11, initializer=init_worker)
+    pool = multiprocessing.Pool(processes=20, initializer=init_worker)
     toolbox.register("map", pool.map)
 
     # Initialize the population
