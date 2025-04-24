@@ -157,7 +157,7 @@ default_dynamic_params:
 ea_parameters:
   crossover_probability: 0.5
   mutation_probability: 0.1
-  number_of_generations: 5000
+  number_of_generations: 500
   population_size: 50
   start_population:
     load_dir: ''
