@@ -4,7 +4,7 @@
 #SBATCH -c 60
 #SBATCH --mem=300G
 #SBATCH --nodes=1
-#SBATCH --time=7-00:00:00
+#SBATCH --time=2-00:00:00
 #SBATCH --requeue
 #SBATCH --nodelist=cn-v-[1-8]
 
