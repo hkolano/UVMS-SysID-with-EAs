@@ -643,10 +643,14 @@ def main(config, load_checkpoint):
     # Initialize the population
     population_size = config["ea_parameters"]["population_size"]
 
+    # Make sure the folder for this trial exists
+    save_dir = Path(os.path.expanduser(config['save_options']['save_dir']))
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+
     # If we have the flag set to load the checkpoint, then that overrides the config
     if load_checkpoint:
         # Look at what populations we have saved
-        save_dir = Path(os.path.expanduser(config['save_options']['save_dir']))
         checkpoints = [c for c in os.listdir(save_dir) if c.split('_')[0]=='gen']
         checkpoints.sort(key=lambda c: int(c.split('_')[-1].split('.')[0]), reverse=True)
         print(checkpoints)
