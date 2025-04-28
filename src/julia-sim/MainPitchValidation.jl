@@ -1,6 +1,6 @@
-#= 
+#=
 Main flight code for running the pitch prediciton pipeline with the setup used in Hinsdale trials.
-=# 
+=#
 
 # ----------------------------------------------------------
 #                     Import Libraries
@@ -52,30 +52,33 @@ state = MechanismState(mech_blue_alpha)
 num_dofs = num_velocities(mech_blue_alpha)
 num_actuated_dofs = num_dofs-2
 
-
-all_traj_codes = #["003-0", "003-1", 
-# "004-0", "004-1", 
-# "005-0", "005-1", "005-2", "005-3", 
-# "006-0", "006-1", "006-2", "006-3", "006-4", 
+# Set the parameters
+load_parameters_from_csv("/home/gonzaeve/hpc-share/uvms/preliminary/charlie/trial_2/gen_1760.csv", 0)
+# load_parameters_from_csv("/home/gonzaeve/hpc-share/uvms/preliminary/alpha/trial_17/gen_22.csv", 7)
+all_traj_codes = #["003-0", "003-1",
+# "004-0", "004-1",
+# "005-0", "005-1", "005-2", "005-3",
+# "006-0", "006-1", "006-2", "006-3", "006-4",
 # "007-0", "007-1",
 # "009-0", "009-1",
 # "012-0", "012-1", "012-2", "012-3",
-# "014-0", "014-1", "014-2", 
-# "015-0", "015-1", 
-# "016-0", "016-1", 
+# "014-0", "014-1", "014-2",
+# "015-0", "015-1",
+# "016-0", "016-1",
 # "019-0", "019-1", "019-2", "019-3",
-# "020-0", "020-1", 
-# "024-0", "024-1", "024-2", 
-# "025-0", "025-1", 
-# "026-0", "026-1", "026-2", 
-# "030-0", "030-1", 
+# "020-0", "020-1",
+# "024-0", "024-1", "024-2",
+# "025-0", "025-1",
+# "026-0", "026-1", "026-2",
+# "030-0", "030-1",
 # I think the alt ones are the ones that we're using from Hinsdale -Ever
 ["_alt_001-0"]
-# ["_alt_001-0", "_alt_001-1", "_alt_001-2", 
-# "_alt_002-0", "_alt_002-1", 
-# "_alt_008-0", 
-# "_alt_008-1", "_alt_008-2", 
-# "_alt_009-0", "_alt_009-1", 
+# ["_alt_001-1"]
+# ["_alt_001-0", "_alt_001-1", "_alt_001-2",
+# "_alt_002-0", "_alt_002-1",
+# "_alt_008-0",
+# "_alt_008-1", "_alt_008-2",
+# "_alt_009-0", "_alt_009-1",
 # "_alt_011-0", "_alt_011-1", "_alt_011-2"]
 #%%
 # ----------------------------------------------------------
@@ -90,20 +93,20 @@ for (i, trial_code) in enumerate(all_traj_codes)
     # sim_offset = 1
     params, des_df, sim_offset = gettrajparamsfromyaml(trial_code, "otherhome")
 
-    # Get mocap data 
+    # Get mocap data
     mocap_df = get_vehicle_response_from_csv(trial_code, "hinsdale-data-2023", false)
     imu_df = get_imu_data_from_csv(trial_code, "hinsdale-data-2023")
     imu_df = calc_rpy(imu_df)
     js_df = get_js_data_from_csv(trial_code, "hinsdale-data-2023")
-    
-    # 
+
+    #
     init_vs, init_vehpose = get_initial_vehicle_velocities(0, mocap_df)
     init_quat, init_ωs = get_initial_conditions(0, imu_df)
 
     # ----------------------------------------------------------
     #                         Simulate
     # ----------------------------------------------------------
-    
+
     save_to_csv = true
     show_plots = true
     show_animation = false
@@ -129,7 +132,7 @@ for (i, trial_code) in enumerate(all_traj_codes)
     ctlr_cache = CtlrCache(state, noise_cache, filter_cache)
 
     start_buffer = sim_offset+10
-    end_buffer = 5 # rand(5:0.01:10)
+    end_buffer = 2 # rand(5:0.01:10)
     delayed_params = delayedQuinticTrajParams(params,start_buffer, params.T+start_buffer)
 
     # Simulate the trajectory
@@ -143,12 +146,12 @@ for (i, trial_code) in enumerate(all_traj_codes)
     #                      Prepare Plots
     # ----------------------------------------------------------
     include("UVMSPlotting.jl")
-    gr(size=(800, 800)) 
+    gr(size=(800, 800))
     @show sim_offset
 
     sim_palette = palette([:deepskyblue2, :magenta], 4)
     actual_palette = palette([:goldenrod1, :springgreen3], 4)
-    
+
     # Downsample the time steps to goal_freq
     ts_down = [ts[i] for i in 1:sample_rate:length(ts)]
     ts_down_no_zero = ts_down[2:end]
@@ -175,14 +178,14 @@ for (i, trial_code) in enumerate(all_traj_codes)
 
 
     # p_quats = new_plot()
-    # @df mocap_df plot!(p_quats, :time_secs[1:2500], 
-    #     [:x_ori[1:2500], :y_ori[1:2500], :z_ori[1:2500], :w_ori[1:2500]], 
-    #     palette=actual_palette, linewidth=2, 
+    # @df mocap_df plot!(p_quats, :time_secs[1:2500],
+    #     [:x_ori[1:2500], :y_ori[1:2500], :z_ori[1:2500], :w_ori[1:2500]],
+    #     palette=actual_palette, linewidth=2,
     #     label=["actual x_ori" "actual y_ori" "actual z_ori" "actual w_ori"])
     # xaxis!(p_quats, grid = (:x, :solid, .75, .9), minorgrid = (:x, :dot, .5, .5))
-    # @df sim_df plot!(p_quats, :time_secs.+sim_offset, 
-    #     [:x_ori, :y_ori, :z_ori, :w_ori], 
-    #     palette=sim_palette, linewidth=2, linestyle=:dash, 
+    # @df sim_df plot!(p_quats, :time_secs.+sim_offset,
+    #     [:x_ori, :y_ori, :z_ori, :w_ori],
+    #     palette=sim_palette, linewidth=2, linestyle=:dash,
     #     label=label=["sim x_ori" "sim y_ori" "sim z_ori" "sim w_ori"])
     # plot!(p_quats, legend=:outerbottomright)
     # title!("BlueROV Quaternion")
@@ -195,8 +198,8 @@ for (i, trial_code) in enumerate(all_traj_codes)
     # @df mocap_df plot!(p_vehrp, :time_secs[1:3200], [:roll[1:3200], :pitch[1:3200]], palette=actual_palette, linewidth=2, label=["actual roll" "actual pitch"])
     @df mocap_df plot!(p_vehrp, :time_secs, [:roll, :pitch], palette=actual_palette, linewidth=2, label=["mocap roll" "mocap pitch"])
     xaxis!(p_vehrp, grid = (:x, :solid, .75, .9), minorgrid = (:x, :dot, .5, .5))
-    @df sim_df plot!(p_vehrp, :time_secs.+artificial_offset, [:qs1, :qs2], 
-        palette=sim_palette, linewidth=2, linestyle=:dash, 
+    @df sim_df plot!(p_vehrp, :time_secs.+artificial_offset, [:qs1, :qs2],
+        palette=sim_palette, linewidth=2, linestyle=:dash,
         label=["sim roll" "sim pitch"])
         plot!(p_vehrp, legend=:outerbottomright)
     @df imu_df plot!(p_vehrp, :time_secs, [:roll, :pitch], linewidth=2, label=["imu roll" "imu pitch"])
@@ -212,29 +215,29 @@ for (i, trial_code) in enumerate(all_traj_codes)
     @df js_df plot!(p_js, :time_secs, cols(3:6); palette=actual_palette, linewidth=2)
     xaxis!(p_js, grid = (:x, :solid, .75, .9), minorgrid = (:x, :dot, .5, .5))
     # @df des_df plot!(p_js, :time_secs, cols(2:5); palette=:grayC, linewidth=2, linestyle=:dash)
-    @df sim_df plot!(p_js, :time_secs, 
-        [cols(7).+3.07, cols(8), cols(9), cols(10).+2.879]; #, cols(11)]; 
-        palette=sim_palette, linewidth=2, linestyle=:dash, 
+    @df sim_df plot!(p_js, :time_secs,
+        [cols(7).+3.07, cols(8), cols(9), cols(10).+2.879]; #, cols(11)];
+        palette=sim_palette, linewidth=2, linestyle=:dash,
         label=["sim axis e" "sim axis d" "sim axis c" "sim axis b"])
     plot!(p_js, legend=:outerbottomright)
     ylabel!("Joint position (rad)")
     title!("Alpha Arm Joint Positions")
     plot!(p_js, ylims=(-.5, 6))
     # if bool_plot_velocities == true
-    #     plot_des_vs_act_velocities(ts_down_no_zero, 
-    #         paths, des_paths, meas_paths, filt_paths, 
+    #     plot_des_vs_act_velocities(ts_down_no_zero,
+    #         paths, des_paths, meas_paths, filt_paths,
     #         plot_veh=false, plot_arm=true)
     # end
 
     # if bool_plot_positions == true
-    #     plot_des_vs_act_positions(ts_down_no_zero, des_ts, 
-    #         paths, des_paths, meas_paths, 
+    #     plot_des_vs_act_positions(ts_down_no_zero, des_ts,
+    #         paths, des_paths, meas_paths,
     #         plot_veh = true, plot_arm=true)
     # end
 
     # if bool_plot_taus == true
     #     plot_control_taus(ctlr_cache, ts_down)
-    # end 
+    # end
 
     super_plot = plot(p_js, p_vehrp, layout=(2, 1), plot_title="Sim vs Hinsdale, traj "*trial_code*" (artificial offset "*string(artificial_offset)*"s)")
     display(super_plot)
@@ -260,7 +263,7 @@ for (i, trial_code) in enumerate(all_traj_codes)
         # 11-20: Actual velocity data (vs)
         # 21-30: Noisy position data (noisy_qs)
         # 31-40: Noisy velocity data (noisy_vs)
-        # 41-44: Desired velocities 
+        # 41-44: Desired velocities
         deleteat!(sim_df, 1:2:length(sim_df[!,:time_secs]))
         const_dt_imu_df = interp_at_timesteps(sim_df[!,:time_secs], imu_df, [:roll, :pitch])
         const_dt_js_df = interp_at_timesteps(sim_df[!,:time_secs], js_df, names(js_df))
