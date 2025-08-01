@@ -1,0 +1,2851 @@
+
+EnvironmentNameNotFound: Could not find conda environment: 0
+You can list all discoverable environments with `conda info --envs`.
+
+
+Process SpawnPoolWorker-3:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-4:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-1:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-5:
+Process SpawnPoolWorker-2:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-8:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-9:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-6:
+  Activating project at `~/UVMS-SysID-with-EAs`
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-7:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-10:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-13:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-12:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-14:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-11:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-15:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-17:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-18:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-16:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-19:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-20:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-21:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-23:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-25:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-22:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-24:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-27:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-26:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-28:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-30:
+Traceback (most recent call last):
+  Activating project at `~/UVMS-SysID-with-EAs`
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-29:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-31:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-32:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-33:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-34:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-35:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-38:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-37:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-36:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-39:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-40:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-41:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-42:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-44:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-43:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-45:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-46:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-48:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-47:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-49:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-50:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-51:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-52:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-53:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-54:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-55:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-56:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-58:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-59:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-57:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-60:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-61:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-62:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-63:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-64:
+  Activating project at `~/UVMS-SysID-with-EAs`
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-65:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-66:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-67:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-69:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-68:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-70:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-71:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-73:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-72:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-74:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-75:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-76:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-78:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-77:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-79:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-80:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: ArgumentError: Package Rotations [6038ab10-8711-5258-84ad-4b1120ba62dc] is required but does not seem to be installed:
+ - Run `Pkg.instantiate()` to install all recorded dependencies.
+
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+Process SpawnPoolWorker-81:
+Process SpawnPoolWorker-82:
+Process SpawnPoolWorker-83:
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: InitError: Artifact "Libiconv" was not installed correctly. Try `using Pkg; Pkg.instantiate()` to re-install all missing resources.
+during initialization of module Libiconv_jll
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/Libiconv_jll/mEDau/src/Libiconv_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/wrappers/x86_64-linux-gnu.jl:5
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/XML2_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/LightXML/g6rbQ/src/LightXML.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/urdf/URDF.jl:1
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: InitError: Artifact "Libiconv" was not installed correctly. Try `using Pkg; Pkg.instantiate()` to re-install all missing resources.
+during initialization of module Libiconv_jll
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/Libiconv_jll/mEDau/src/Libiconv_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/wrappers/x86_64-linux-gnu.jl:5
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/XML2_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/LightXML/g6rbQ/src/LightXML.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/urdf/URDF.jl:1
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: InitError: Artifact "Libiconv" was not installed correctly. Try `using Pkg; Pkg.instantiate()` to re-install all missing resources.
+during initialization of module Libiconv_jll
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/Libiconv_jll/mEDau/src/Libiconv_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/wrappers/x86_64-linux-gnu.jl:5
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/XML2_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/LightXML/g6rbQ/src/LightXML.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/urdf/URDF.jl:1
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-84:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: InitError: Artifact "Libiconv" was not installed correctly. Try `using Pkg; Pkg.instantiate()` to re-install all missing resources.
+during initialization of module Libiconv_jll
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/Libiconv_jll/mEDau/src/Libiconv_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/wrappers/x86_64-linux-gnu.jl:5
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/XML2_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/LightXML/g6rbQ/src/LightXML.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/urdf/URDF.jl:1
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-85:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: InitError: Artifact "Libiconv" was not installed correctly. Try `using Pkg; Pkg.instantiate()` to re-install all missing resources.
+during initialization of module Libiconv_jll
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/Libiconv_jll/mEDau/src/Libiconv_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/wrappers/x86_64-linux-gnu.jl:5
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/XML2_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/LightXML/g6rbQ/src/LightXML.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/urdf/URDF.jl:1
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+Process SpawnPoolWorker-86:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: InitError: Artifact "Libiconv" was not installed correctly. Try `using Pkg; Pkg.instantiate()` to re-install all missing resources.
+during initialization of module Libiconv_jll
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/Libiconv_jll/mEDau/src/Libiconv_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/wrappers/x86_64-linux-gnu.jl:5
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/XML2_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/LightXML/g6rbQ/src/LightXML.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/urdf/URDF.jl:1
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+Process SpawnPoolWorker-87:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: InitError: Artifact "Libiconv" was not installed correctly. Try `using Pkg; Pkg.instantiate()` to re-install all missing resources.
+during initialization of module Libiconv_jll
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/Libiconv_jll/mEDau/src/Libiconv_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/wrappers/x86_64-linux-gnu.jl:5
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/XML2_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/LightXML/g6rbQ/src/LightXML.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/urdf/URDF.jl:1
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-88:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: InitError: Artifact "Libiconv" was not installed correctly. Try `using Pkg; Pkg.instantiate()` to re-install all missing resources.
+during initialization of module Libiconv_jll
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/Libiconv_jll/mEDau/src/Libiconv_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/wrappers/x86_64-linux-gnu.jl:5
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/XML2_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/LightXML/g6rbQ/src/LightXML.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/urdf/URDF.jl:1
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-90:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: InitError: Artifact "Libiconv" was not installed correctly. Try `using Pkg; Pkg.instantiate()` to re-install all missing resources.
+during initialization of module Libiconv_jll
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/Libiconv_jll/mEDau/src/Libiconv_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/wrappers/x86_64-linux-gnu.jl:5
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/XML2_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/LightXML/g6rbQ/src/LightXML.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/urdf/URDF.jl:1
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+Process SpawnPoolWorker-89:
+Traceback (most recent call last):
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/multiprocessing/pool.py", line 109, in worker
+    initializer(*initargs)
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 598, in init_worker
+    setupJulia()
+    ~~~~~~~~~~^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 184, in setupJulia
+    Main.eval('using RigidBodyDynamics, Rotations ')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 633, in eval
+    ans = self._call(src)
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 561, in _call
+    self.check_exception(src)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/nfs/hpc/share/gonzaeve/miniforge/envs/uvms-learning/lib/python3.13/site-packages/julia/core.py", line 615, in check_exception
+    raise JuliaError(u'Exception \'{}\' occurred while calling julia code:\n{}'
+                     .format(exception, src))
+julia.core.JuliaError: Exception 'LoadError: InitError: Artifact "Libiconv" was not installed correctly. Try `using Pkg; Pkg.instantiate()` to re-install all missing resources.
+during initialization of module Libiconv_jll
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/Libiconv_jll/mEDau/src/Libiconv_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/wrappers/x86_64-linux-gnu.jl:5
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/XML2_jll/g7vXP/src/XML2_jll.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/LightXML/g6rbQ/src/LightXML.jl:2
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/urdf/URDF.jl:1
+in expression starting at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/RigidBodyDynamics.jl:1' occurred while calling julia code:
+using RigidBodyDynamics, Rotations 
+  Activating project at `~/UVMS-SysID-with-EAs`
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+WARNING: method definition for convert at /nfs/stak/users/gonzaeve/.julia/packages/RigidBodyDynamics/8B04X/src/spatial/motion_force_interaction.jl:114 declares type variable T but does not use it.
+slurmstepd: error: *** JOB 18385031 ON cn-v-5 CANCELLED AT 2025-02-06T16:34:10 ***

@@ -1,0 +1,13 @@
+
+EnvironmentNameNotFound: Could not find conda environment: 3
+You can list all discoverable environments with `conda info --envs`.
+
+
+Traceback (most recent call last):
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/julia-sim/../evolutionary-algorithms/run_cli.py", line 22, in <module>
+    main(config, args.load_checkpoint)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/learn.py", line 645, in main
+    checkpoints = [c for c in os.listdir(save_dir) if c.split('_')[0]=='gen']
+                              ~~~~~~~~~~^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/nfs/stak/users/gonzaeve/hpc-share/uvms/preliminary/charlie/trial_3'

@@ -1,0 +1,10 @@
+
+EnvironmentNameNotFound: Could not find conda environment: 1
+You can list all discoverable environments with `conda info --envs`.
+
+
+Traceback (most recent call last):
+  File "/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/julia-sim/../evolutionary-algorithms/run_cli.py", line 18, in <module>
+    with open(args.config_dir, 'r') as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/nfs/stak/users/gonzaeve/UVMS-SysID-with-EAs/src/evolutionary-algorithms/config/charlie/trial_1.yaml'

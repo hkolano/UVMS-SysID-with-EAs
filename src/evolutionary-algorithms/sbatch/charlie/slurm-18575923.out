@@ -1,0 +1,6 @@
+
+EnvironmentNameNotFound: Could not find conda environment: 2
+You can list all discoverable environments with `conda info --envs`.
+
+
+slurmstepd: error: *** JOB 18575923 ON cn-v-3 CANCELLED AT 2025-04-23T19:00:54 ***
